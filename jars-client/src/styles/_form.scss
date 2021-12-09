@@ -1,13 +1,20 @@
 .form {
-  border-radius: $boxRadius;
+  border-radius: 5vw;
   border-color: $accent-color;
   margin-bottom: 2vw;
+  padding: 2vw;
   border-style: solid;
   border-width: 0.4vw;
   .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1vw;
     .form-control {
       border-radius: $boxRadius;
       border-color: $base-color;
+      border-width: 0.2vw;
+      width: 50%;
     }
     .submitButton {
       border-radius: $boxRadius;
