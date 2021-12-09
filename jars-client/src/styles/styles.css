@@ -78,6 +78,13 @@
           flex-direction: column;
 }
 
+.movement_history ul {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
 .jarGrid {
   width: 85%;
   display: -ms-grid;
@@ -133,6 +140,28 @@
 .picture {
   width: 7vw;
   height: 7vw;
+}
+
+.form {
+  border-radius: 20vw;
+  border-color: #ffd166;
+  margin-bottom: 2vw;
+  border-style: solid;
+  border-width: 0.4vw;
+}
+
+.form .form-group .form-control {
+  border-radius: 20vw;
+  border-color: #073b4c;
+}
+
+.form .form-group .submitButton {
+  border-radius: 20vw;
+  border-color: #ffd166;
+  margin-bottom: 2vw;
+  border-style: solid;
+  border-width: 0.4vw;
+  background-color: #ffd166;
 }
 
 .App {

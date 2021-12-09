@@ -21,7 +21,7 @@ import {createMovement} from '../actions/MovementsActions.js'
         
   
     return (
-        <div className="movementForm">
+        <div className="form">
           <form onSubmit={handleSubmit}>
               <div className="form-group"> 
                   <label className="m-2">Concept: </label>
@@ -51,7 +51,7 @@ import {createMovement} from '../actions/MovementsActions.js'
                       />
               </div>
               <div className="form-group mt-5">
-                <input type="submit" value="Add Expense" className="btn btn-secondary" />
+                <input type="submit" value="Add Expense" className="submitButton" />
               </div>           
           </form>
         </div>

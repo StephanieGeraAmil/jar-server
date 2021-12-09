@@ -8,15 +8,13 @@ const MovementsHistorySection = () => {
     return (
         <div className="movement_history">
            <ul>
-            {movements.map((item) => {
-                return (
-
-                    <li key={item.concept} className="itemlist">
-                        <Movement key={item.concept} movement={item} />
-                    </li>
-                )
-
-            })}
+                {movements.map((item) => {
+                    return (
+                        <li key={item.concept}>
+                            <Movement key={item.concept} movement={item} />
+                        </li>
+                    )
+                })}
              </ul>
         </div>
     )
