@@ -1,9 +1,10 @@
 import React from 'react'
 
- const Movement = () => {
-     const amount=500
-     const concept='Car Payment'
-     const jar='Necesities'
+ const Movement = ({movement}) => {
+     console.log(movement);
+     const amount=movement.amount
+     const concept=movement.concept
+     const jar=movement.jar
     return (
         <div className="movement">
             <h4>{concept}</h4>
