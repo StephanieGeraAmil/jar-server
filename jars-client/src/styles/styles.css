@@ -1,0 +1,165 @@
+.horizontalSection {
+  width: 85%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 6vw;
+}
+
+.balance {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 4vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-style: solid;
+  border-width: 0.4vw;
+  border-radius: 20vw;
+  border-color: #073b4c;
+}
+
+.balance h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.balance h4 {
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.movement {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5vw;
+  height: 9vw;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-radius: 20vw;
+  background-color: #ffd166;
+  margin-bottom: 2vw;
+}
+
+.movement_history {
+  width: 85%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.jarGrid {
+  width: 85%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 0.5em;
+  grid-column-gap: 1em;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 8vw;
+}
+
+.jarGrid h4 {
+  margin: 0;
+  font-size: 0.6em;
+  text-align: center;
+}
+
+.jar {
+  width: 10vw;
+  height: 10vw;
+}
+
+.link {
+  width: 5vw;
+  height: 5vw;
+}
+
+.wallet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.direction {
+  width: 3vw;
+  height: 3vw;
+}
+
+.picture {
+  width: 7vw;
+  height: 7vw;
+}
+
+.App {
+  background-color: #ffff;
+  color: #073b4c;
+  width: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-family: "roboto";
+}
+
+.App .div_img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,38 @@
+@import "./variables";
+@import "./horizontal_section";
+@import "./balance";
+@import "./movements";
+@import "./movement_history_section";
+@import "./jar_grid";
+@import "./jar";
+@import "./links";
+@import "./wallet";
+
+// @font-face {
+//   font-family: "luckiest_guyregular";
+//   src: local("luckiest_guyregular"),
+//     url(../assets/webfontkit-20210913-070136/luckiestguy-regular-webfont.woff)
+//       format("woff");
+// }
+
+@mixin light-theme {
+  background-color: $background-color;
+  color: $base-color;
+}
+
+.App {
+  @include light-theme();
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-family: $font;
+  .div_img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+}
