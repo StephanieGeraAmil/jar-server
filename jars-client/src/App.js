@@ -13,10 +13,12 @@ const App = () =>{
   //dispatches an action
   return (
     <div className="App">
-      <AddButtonsSection/>
-      <MidSection/>
-      <JarsSection/>
+      {/* <AddButtonsSection/> */}
+    
+      
+        <MidSection/>
       <MovementsHistorySection/>
+      <JarsSection/>
       <MovementForm/>
     </div>
   );

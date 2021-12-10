@@ -1,10 +1,8 @@
 import React ,{useEffect} from 'react'
 import Movement from './Movement';
 import { useSelector } from 'react-redux';
-const MovementsHistorySection = () => {
-    useEffect(()=>{},[])
-    const movements=useSelector((state)=>state.movements);
-    console.log(movements);
+const MovementsHistorySection = () => {  
+    const movements=useSelector((state)=>state.movements);  
     return (
         <div className="movement_history">
            <ul>

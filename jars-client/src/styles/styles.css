@@ -8,9 +8,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 6vw;
@@ -20,30 +17,26 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 4vw;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  border-style: solid;
-  border-width: 0.4vw;
-  border-radius: 20vw;
-  border-color: #073b4c;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .balance h1 {
   margin: 0;
-  font-size: 1.8em;
+  font-size: 8vw;
 }
 
 .balance h4 {
   margin: 0;
-  font-size: 0.8em;
+  font-size: 3vw;
 }
 
 .movement {
@@ -95,10 +88,10 @@
   width: 85%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  grid-row-gap: 0.5em;
-  grid-column-gap: 1em;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 8vw;
+  grid-column-gap: 2vw;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -108,13 +101,18 @@
 
 .jarGrid h4 {
   margin: 0;
-  font-size: 0.6em;
+  font-size: 3.5vw;
   text-align: center;
 }
 
 .jar {
-  width: 10vw;
-  height: 10vw;
+  height: 18vw;
+  width: 15vw;
+}
+
+.jar .jar_img {
+  height: 14vw;
+  margin: 1vw;
 }
 
 .link {
@@ -139,13 +137,13 @@
 }
 
 .direction {
-  width: 7vw;
-  height: 7vw;
+  width: 6vw;
+  height: 6vw;
 }
 
 .picture {
-  width: 12vw;
-  height: 12vw;
+  width: 11vw;
+  height: 11vw;
 }
 
 .form {
@@ -212,6 +210,6 @@
 .App .div_img {
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: center center;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -5,8 +5,9 @@ const Balance = () => {
    
     return (
         <div className="balance">
-            <h4>BALANCE</h4>
+                <h4>BALANCE</h4>
             <h1>${ new Intl.NumberFormat({useGrouping:true}).format(balance)}</h1>    
+        
         </div>
     )
 }
