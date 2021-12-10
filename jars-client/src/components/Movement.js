@@ -7,9 +7,9 @@ import React from 'react'
      const jar=movement.jar
     return (
         <div className="movement">
-            <h4>{concept}</h4>
-            <h4>${amount}</h4>
-            <h4>{jar}</h4>
+            <h4 className="info_movement">{concept}</h4>
+            <h4 className="info_movement">${amount}</h4>
+            <h4 className="info_movement">{jar}</h4>
         </div>
     )
 }

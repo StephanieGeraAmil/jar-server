@@ -9,4 +9,9 @@
   border-radius: $boxRadius;
   background-color: $accent-color;
   margin-bottom: 2vw;
+  .info_movement {
+    width: 15vw;
+    text-align: left;
+    font-size: 4vw;
+  }
 }

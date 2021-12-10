@@ -66,6 +66,12 @@
   margin-bottom: 2vw;
 }
 
+.movement .info_movement {
+  width: 15vw;
+  text-align: left;
+  font-size: 4vw;
+}
+
 .movement_history {
   width: 85%;
   margin: auto;
