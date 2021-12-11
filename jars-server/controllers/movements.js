@@ -3,7 +3,7 @@ import MovementModel from "../models/MovementModel.js";
 export const getMovements = async (req,res) =>{
    try{ 
        const movements= await MovementModel.find();
-        console.log(movements);
+       
         res.status(200).json(movements); 
    }catch(error){
      res.status(404).json({message:error.message});

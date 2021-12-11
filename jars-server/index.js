@@ -3,7 +3,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import movementsRouter from './routes/movements.js'
+import movementsRouter from './routes/movements.js';
+import jarsRouter from './routes/jars.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 //conecting to a BD
 app.use('/movements',movementsRouter);
+app.use('/jars',jarsRouter);
 //app.use('/movements', router)
 
 const CONNECTION_URL= 'mongodb+srv://adminuser:DvXJcz9VED8XyEc@cluster0.k84uw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';

@@ -6,10 +6,12 @@ import JarsSection from './components/JarsSection';
 import MovementsHistorySection from './components/MovementsHistorySection';
 import { useDispatch } from 'react-redux';
 import {getMovements} from './actions/MovementsActions.js'
+import {getJars} from './actions/JarsActions.js'
 import MovementForm from './components/MovementForm';
 const App = () =>{
   const dispatch= useDispatch();
-  useEffect(()=>{dispatch(getMovements());},[dispatch]);
+  useEffect(()=>{dispatch(getMovements());
+    dispatch(getJars());},[dispatch]);
   //dispatches an action
   return (
     <div className="App">

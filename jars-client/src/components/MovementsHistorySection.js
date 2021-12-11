@@ -3,6 +3,7 @@ import Movement from './Movement';
 import { useSelector } from 'react-redux';
 const MovementsHistorySection = () => {  
     const movements=useSelector((state)=>state.movements);  
+    console.log(movements);
     return (
         <div className="movement_history">
            <ul>

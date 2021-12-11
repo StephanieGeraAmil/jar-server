@@ -210,7 +210,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   font-size: calc(10px + 2vmin);
-  font-family: "roboto";
+  font-family: "Montserrat", sans-serif;
 }
 
 .App .div_img {
