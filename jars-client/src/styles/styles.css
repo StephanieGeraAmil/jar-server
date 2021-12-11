@@ -147,12 +147,19 @@
 }
 
 .form {
-  border-radius: 5vw;
-  border-color: #ffd166;
   margin-bottom: 2vw;
-  padding: 2vw;
-  border-style: solid;
-  border-width: 0.4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 .form .form-group {
@@ -166,20 +173,19 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 1vw;
+  margin-bottom: 2vw;
 }
 
 .form .form-group .form-control {
   border-radius: 20vw;
   border-color: #073b4c;
-  border-width: 0.2vw;
+  border-width: 0.1vw;
   width: 50%;
 }
 
 .form .form-group .submitButton {
   border-radius: 20vw;
   border-color: #ffd166;
-  margin-bottom: 2vw;
   border-style: solid;
   border-width: 0.4vw;
   background-color: #ffd166;

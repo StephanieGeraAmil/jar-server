@@ -14,9 +14,7 @@ const App = () =>{
   return (
     <div className="App">
       {/* <AddButtonsSection/> */}
-    
-      
-        <MidSection/>
+      <MidSection/>
       <MovementsHistorySection/>
       <JarsSection/>
       <MovementForm/>

@@ -1,25 +1,29 @@
 .form {
-  border-radius: 5vw;
-  border-color: $accent-color;
+  // border-radius: 5vw;
+  // border-color: $accent-color;
   margin-bottom: 2vw;
-  padding: 2vw;
-  border-style: solid;
-  border-width: 0.4vw;
+  // padding: 2vw;
+  // border-style: solid;
+  // border-width: 0.4vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
   .form-group {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 1vw;
+    margin-bottom: 2vw;
     .form-control {
       border-radius: $boxRadius;
       border-color: $base-color;
-      border-width: 0.2vw;
+      border-width: 0.1vw;
       width: 50%;
     }
     .submitButton {
       border-radius: $boxRadius;
       border-color: $accent-color;
-      margin-bottom: 2vw;
+
       border-style: solid;
       border-width: 0.4vw;
       background-color: $accent-color;
