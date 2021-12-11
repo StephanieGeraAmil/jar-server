@@ -3,9 +3,8 @@ import { Jar } from './Jar'
 import { useSelector } from 'react-redux';
 
 const JarsSection = () => {
-     const jars=useSelector((state)=>state.jars); 
-      console.log('in the jars section');
-     console.log(jars);
+     const jars=useSelector((state)=>{ return state.jars}); 
+    
     // const jars=[
     // {name:"NECESITIES",balance:5000},
     // {name:"GIVE",balance:150},

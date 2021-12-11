@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import {getMovements} from './actions/MovementsActions.js'
 import {getJars} from './actions/JarsActions.js'
 import MovementForm from './components/MovementForm';
+import JarForm from './components/JarForm';
 const App = () =>{
   const dispatch= useDispatch();
   useEffect(()=>{dispatch(getMovements());
@@ -20,6 +21,7 @@ const App = () =>{
       <MovementsHistorySection/>
       <JarsSection/>
       <MovementForm/>
+        <JarForm/>
     </div>
   );
 }

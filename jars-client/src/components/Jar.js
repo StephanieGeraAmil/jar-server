@@ -10,7 +10,7 @@ export const Jar = ({jar}) => {
                     
                     }}>
             </div>
-             <h4 className="info_jar">${jar.balance}</h4>
+             <h4 className="info_jar">${jar.budget}</h4>
         </div>
     )
 }

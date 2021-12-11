@@ -3,7 +3,8 @@ import JarModel from "../models/JarsModel.js";
 export const getJars = async (req,res) =>{
    try{ 
        const jars= await JarModel.find();
-       
+       console.log('getting jars');
+         console.log(jars);
         res.status(200).json(jars); 
    }catch(error){
      res.status(404).json({message:error.message});
