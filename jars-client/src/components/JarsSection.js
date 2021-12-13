@@ -17,7 +17,7 @@ const JarsSection = () => {
         <div className="jarGrid">
             {jars.map((item) => {
                     return (
-                        <Jar key={item.id} jar={item}/>
+                        <Jar key={item._id} jar={item}/>
                     )
                 })}
 

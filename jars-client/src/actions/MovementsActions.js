@@ -21,5 +21,15 @@ export const createMovement=(movement)=>async(dispatch)=>{
         console.log(error);
     }
 }
+export const updateMovement=(updatedMovement)=>async(dispatch)=>{
+    try {
+        const {data} = api.updateMovement(updatedMovement);
+        const action={type:'UPDATE_MOVEMENT', payload:data};
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 

@@ -9,9 +9,18 @@
   border-radius: $boxRadius;
   background-color: $accent-color;
   margin-bottom: 2vw;
+  .movement_column {
+    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
   .info_movement {
-    width: 15vw;
-    text-align: left;
+    // text-align: left;
     font-size: 4vw;
+  }
+  .movement_actions {
+    width: 3.5vw;
+    height: 3.5vw;
   }
 }

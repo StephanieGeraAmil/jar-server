@@ -21,3 +21,13 @@ export const createMovements=async (req,res) =>{
    }
 }
 
+export const updateMovements=async (req,res) =>{
+   const {id:_id}=req.params;
+   const updated=req.body;
+   if(!Mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
+   
+    const updatedMovement= await MovementModel.findByIdAndUpdate(id,updated,{new:true});
+    res.status(204).json(updatedMovement);
+        
+}
+

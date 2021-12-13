@@ -60,10 +60,26 @@
   margin-bottom: 2vw;
 }
 
+.movement .movement_column {
+  width: 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .movement .info_movement {
-  width: 15vw;
-  text-align: left;
   font-size: 4vw;
+}
+
+.movement .movement_actions {
+  width: 3.5vw;
+  height: 3.5vw;
 }
 
 .movement_history {

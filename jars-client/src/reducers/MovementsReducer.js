@@ -4,9 +4,10 @@ export default (movements=[], action)=>{
         //return the action or the state changed by the action
         return [...movements, action.payload];
         
+        case'UPDATE_MOVEMENT':
+        return [movements];
+        
         case'FETCH_ALL_MOVEMENTS':
-             console.log('in the reducer of movements');
-        console.log(action.payload);
         return action.payload;
         
         default:

@@ -4,13 +4,13 @@ import {createJar} from '../actions/JarsActions.js'
 
  const JarForm = () => {
      const [jarData, setJarData]=useState({
-         budget:0,
+         percentage:0,
          name:''
 
      })
     const dispatch= useDispatch();
     const name=jarData.name;
-    const budget=jarData.budget;
+    const percentage=jarData.percentage;
 
   
     const handleSubmit=(e)=>{
@@ -32,12 +32,12 @@ import {createJar} from '../actions/JarsActions.js'
                       />
               </div>
               <div className="form-group">
-                  <label className="m-2">Budget: </label>
+                  <label className="m-2">Percentage: </label>
                   <input 
                       type="text" 
                       className="form-control"
-                      value={budget}
-                      onChange={(e)=>setJarData({...jarData, budget:e.target.value})}
+                      value={percentage}
+                      onChange={(e)=>setJarData({...jarData, percentage:e.target.value})}
                       />
               </div>
          

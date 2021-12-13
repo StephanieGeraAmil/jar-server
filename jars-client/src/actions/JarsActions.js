@@ -21,3 +21,13 @@ export const createJar=(jar)=>async(dispatch)=>{
         console.log(error);
     }
 }
+export const updateJar=(updatedJar)=>async(dispatch)=>{
+    try {
+        const {data} = api.updateJar(updatedJar);
+        const action={type:'UPDATE_JAR', payload:data};
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
