@@ -5,6 +5,9 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import movementsRouter from './routes/movements.js';
 import jarsRouter from './routes/jars.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
@@ -16,7 +19,7 @@ app.use('/movements',movementsRouter);
 app.use('/jars',jarsRouter);
 //app.use('/movements', router)
 
-const CONNECTION_URL= 'mongodb+srv://adminuser:DvXJcz9VED8XyEc@cluster0.k84uw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL= process.env.CONNECTION_URL;
 const PORT= process.env.PORT||5500;
 mongoose.connect(CONNECTION_URL,{useNewUrlParser:true, useUnifiedTopology:true})
 .then(()=>app.listen(PORT,()=> console.log(`server running on port: ${PORT}`)))

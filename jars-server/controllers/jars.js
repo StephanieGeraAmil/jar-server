@@ -22,7 +22,7 @@ export const createJars=async (req,res) =>{
 }
 export const updateJar=async (req,res) =>{
    const {id:_id}=req.params;
-   const updated=req.body;
+   const updated={...req.body,_id};
    if(!Mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
    
     const updatedJar= await JarModel.findByIdAndUpdate(id,updated,{new:true});
