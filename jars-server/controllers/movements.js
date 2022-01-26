@@ -1,5 +1,6 @@
 
 import MovementModel from "../models/MovementModel.js";
+import mongoose from 'mongoose';
 export const getMovements = async (req,res) =>{
    try{ 
        const movements= await MovementModel.find();
@@ -22,12 +23,22 @@ export const createMovements=async (req,res) =>{
 }
 
 export const updateMovements=async (req,res) =>{
-   const {id:_id}=req.params;
+ const {id:_id}=req.params;
    const updated=req.body;
-   if(!Mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
+   if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
    
-    const updatedMovement= await MovementModel.findByIdAndUpdate(id,updated,{new:true});
+    const updatedMovement= await MovementModel.findByIdAndUpdate(_id,updated,{new:true});
     res.status(204).json(updatedMovement);
+        
+}
+export const deleteMovements=async (req,res) =>{
+      
+   const {id:_id}=req.params;
+   
+   if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
+   
+     const movement=await MovementModel.deleteOne({_id:_id});
+    res.status(204).json(movement);
         
 }
 

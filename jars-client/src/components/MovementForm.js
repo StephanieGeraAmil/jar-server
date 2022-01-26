@@ -1,6 +1,6 @@
 import React ,{useState} from 'react'
-import { useDispatch } from 'react-redux';
 import {createMovement} from '../actions/MovementsActions.js'
+import { useDispatch } from 'react-redux';
 
  const MovementForm = () => {
      const [movementData, setMovementData]=useState({
@@ -9,14 +9,16 @@ import {createMovement} from '../actions/MovementsActions.js'
          jar:''
 
      })
-    const dispatch= useDispatch();
+      const dispatch= useDispatch();
     const amount=movementData.amount;
     const concept=movementData.concept;
     const jar=movementData.jar;
   
     const handleSubmit=(e)=>{
         e.preventDefault();
+        console.log(movementData);
         dispatch(createMovement(movementData));
+        
         };
         
   

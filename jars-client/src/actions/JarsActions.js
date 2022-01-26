@@ -1,22 +1,27 @@
-import {FETCH_ALL_JARS,CREATE_JAR,UPDATE_JAR} from '../constants/actionTypes'
+import * as actions from '../constants/actionTypes'
 import * as api from '../api/api.js';
 //action creators
-export const getJars = ()=>async(dispatch)=>{
+export const getJars = ()=>async(dispatch,getState)=>{
     try {
+        
         const {data}= await api.fetchJars();
-        const action={type:FETCH_ALL_JARS, payload:data};
+        const action={type:actions.FETCH_ALL_JARS, payload:data};
         dispatch(action);
+
+
     } catch (error) {
         console.log(error);
     }
    
 }
-export const createJar=(jar)=>async(dispatch)=>{
+export const createJar=(jar)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {
-        const {data} = api.createJar(jar);
-        const action={type:CREATE_JAR, payload:data};
+
+        const {data} =await api.createJar(jar);
+        const action={type:actions.CREATE_JAR, payload:data};
         dispatch(action);
+
         
     } catch (error) {
         console.log(error);
@@ -24,8 +29,18 @@ export const createJar=(jar)=>async(dispatch)=>{
 }
 export const updateJar=(updatedJar)=>async(dispatch)=>{
     try {
-        const {data} = api.updateJar(updatedJar);
-        const action={type:UPDATE_JAR, payload:data};
+        const {data} = await api.updateJar(updatedJar);
+        const action={type:actions.UPDATE_JAR, payload:data};
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const deleteJar=(jar_id)=>async(dispatch)=>{
+    try {
+        const deleteJar = await api.deleteJar(jar_id);
+        const action={type: actions.DELETE_MOVEMENT,payload:jar_id};
         dispatch(action);
         
     } catch (error) {

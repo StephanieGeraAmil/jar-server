@@ -11,8 +11,10 @@ import MovementForm from './components/MovementForm';
 import JarForm from './components/JarForm';
 const App = () =>{
   const dispatch= useDispatch();
-  useEffect(()=>{dispatch(getMovements());
-    dispatch(getJars());},[dispatch]);
+  useEffect(()=>{
+    dispatch(getMovements());
+    dispatch(getJars());},
+    []);
   //dispatches an action
   return (
     <div className="App">

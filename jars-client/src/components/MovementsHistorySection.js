@@ -3,14 +3,14 @@ import Movement from './Movement';
 import { useSelector } from 'react-redux';
 const MovementsHistorySection = () => {  
     const movements=useSelector((state)=>state.movements);  
-    console.log(movements);
+  
     return (
         <div className="movement_history">
            <ul>
                 {movements.map((item) => {
                     return (
-                        <li key={item.concept}>
-                            <Movement key={item.concept} movement={item} />
+                        <li key={item._id}>
+                            <Movement key={item._id} movement={item} />
                         </li>
                     )
                 })}

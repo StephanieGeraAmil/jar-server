@@ -5,8 +5,8 @@ const jarSchema= mongoose.Schema(
        name: {type:String, required:true},
        percentage:  {type:Number, default:0},
   
-       created_date:{type:Date, default:new Date()},
-       deleted_date:{type:Date}
+       date:{type:Date, default:new Date()},
+     
     }
 )
 

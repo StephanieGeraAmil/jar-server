@@ -18,6 +18,8 @@ app.use(cors());
 app.use('/movements',movementsRouter);
 app.use('/jars',jarsRouter);
 //app.use('/movements', router)
+//initial greeting
+app.get('/',(req,res)=>{ res.send('Hello to the Jars Aplication')});
 
 const CONNECTION_URL= process.env.CONNECTION_URL;
 const PORT= process.env.PORT||5500;

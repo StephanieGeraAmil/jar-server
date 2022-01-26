@@ -1,8 +1,12 @@
 import React from 'react'
+import {useDispatch} from 'react-redux';
+import { deleteMovement} from '../actions/MovementsActions.js'
 
  const Movement = ({movement}) => {
-     const handleEdit=()=>{}
-     const handleDelete=()=>{}
+     const dispatch= useDispatch();
+     console.log(movement);
+    
+ 
     return (
         <div className="movement">
             
@@ -13,11 +17,11 @@ import React from 'react'
              <div className="movement_column">
                     <div  className="movement_actions div_img" style={{
                                 backgroundImage: `url("/imgs/edit.png")`
-                                }} onClick={handleEdit}>
+                                }} onClick={()=>{}}>
                                 </div>
                         <div  className="movement_actions div_img" style={{
                     backgroundImage: `url("/imgs/delete.png")`
-                    }} onClick={handleDelete}>
+                    }} onClick={()=>{dispatch(deleteMovement(movement._id));}}>
                     </div>
             </div>
         </div>
