@@ -1,6 +1,7 @@
-import React ,{useState} from 'react'
-import {createMovement} from '../actions/MovementsActions.js'
-import { useDispatch } from 'react-redux';
+import React ,{useState,useEffect} from 'react'
+import * as actions from '../actions/MovementsActions.js'
+import {clearMovementSelected} from '../actions/currentSelectionActions.js'
+import { useDispatch , useSelector} from 'react-redux';
 
  const MovementForm = () => {
      const [movementData, setMovementData]=useState({
@@ -9,15 +10,29 @@ import { useDispatch } from 'react-redux';
          jar:''
 
      })
-      const dispatch= useDispatch();
-    const amount=movementData.amount;
-    const concept=movementData.concept;
-    const jar=movementData.jar;
+    const dispatch= useDispatch();
+   
+     const selector=
+     (state) =>(state.currentSelection.movement ? state.currentSelection.movement :null);
+    const movementSelected = useSelector(selector);
+       
+    useEffect(() => {
+       
+    if (movementSelected!=null) {
+       setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
+     }else{
+         setMovementData({concept:"", amount:"", jar:""});
+     }
+    }, [movementSelected]);
   
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(movementData);
-        dispatch(createMovement(movementData));
+        if (movementSelected) {
+            dispatch(actions.updateMovement({_id:movementSelected._id,...movementData}));
+            dispatch(clearMovementSelected());
+        }else{
+            dispatch(actions.createMovement(movementData));
+        }
         
         };
         
@@ -30,7 +45,7 @@ import { useDispatch } from 'react-redux';
                   <input  type="text"
                       required
                       className="form-control"
-                      value={concept}
+                      value={movementData.concept}
                       onChange={(e)=>setMovementData({...movementData, concept:e.target.value})}
                       />
               </div>
@@ -39,7 +54,7 @@ import { useDispatch } from 'react-redux';
                   <input 
                       type="text" 
                       className="form-control"
-                      value={amount}
+                      value={movementData.amount}
                       onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
                       />
               </div>
@@ -48,7 +63,7 @@ import { useDispatch } from 'react-redux';
                   <input 
                       type="text" 
                       className="form-control"
-                      value={jar}
+                      value={movementData.jar}
                       onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}
                       />
               </div>

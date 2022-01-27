@@ -12,3 +12,6 @@ export const FETCH_ALL_MOVEMENTS= "movement/fetch_all_movements";
 
 export const SELECTED_JAR="selected/selected_jar";
 export const SELECTED_MOVEMENT="selected/selected_movement";
+export const UNSELECTED_MOVEMENT="selected/unselected_movement";
+export const UNSELECTED_JAR="selected/unselected_jar";
+

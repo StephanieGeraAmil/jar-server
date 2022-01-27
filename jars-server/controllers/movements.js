@@ -27,8 +27,14 @@ export const updateMovements=async (req,res) =>{
    const updated=req.body;
    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
    
-    const updatedMovement= await MovementModel.findByIdAndUpdate(_id,updated,{new:true});
-    res.status(204).json(updatedMovement);
+   try { 
+        const updatedMovement= await MovementModel.findByIdAndUpdate(_id,updated,{new:true});
+        res.status(204).json(updatedMovement);
+   }catch(error){
+         res.status(409).json({message:error.message});
+   }
+
+
         
 }
 export const deleteMovements=async (req,res) =>{

@@ -29,8 +29,8 @@ export const createJar=(jar)=>async(dispatch,getState)=>{
 }
 export const updateJar=(updatedJar)=>async(dispatch)=>{
     try {
-        const {data} = await api.updateJar(updatedJar);
-        const action={type:actions.UPDATE_JAR, payload:data};
+        await api.updateJar(updatedJar);
+        const action={type:actions.UPDATE_JAR, payload:updatedJar};
         dispatch(action);
         
     } catch (error) {
@@ -39,7 +39,7 @@ export const updateJar=(updatedJar)=>async(dispatch)=>{
 }
 export const deleteJar=(jar_id)=>async(dispatch)=>{
     try {
-        const deleteJar = await api.deleteJar(jar_id);
+        await api.deleteJar(jar_id);
         const action={type: actions.DELETE_MOVEMENT,payload:jar_id};
         dispatch(action);
         

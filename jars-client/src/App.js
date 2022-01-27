@@ -23,7 +23,7 @@ const App = () =>{
       <MovementsHistorySection/>
       <JarsSection/>
       <MovementForm/>
-        <JarForm/>
+      <JarForm/>
     </div>
   );
 }
