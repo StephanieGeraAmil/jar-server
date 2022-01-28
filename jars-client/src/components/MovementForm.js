@@ -12,17 +12,16 @@ import { useDispatch , useSelector} from 'react-redux';
      })
     const dispatch= useDispatch();
    
-     const selector=
-     (state) =>(state.currentSelection.movement ? state.currentSelection.movement :null);
+    const selector=
+        (state) =>(state.currentSelection.movement ? state.currentSelection.movement :null);
     const movementSelected = useSelector(selector);
        
-    useEffect(() => {
-       
-    if (movementSelected!=null) {
-       setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
-     }else{
-         setMovementData({concept:"", amount:"", jar:""});
-     }
+    useEffect(() => {  
+        if (movementSelected!=null) {
+        setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
+        }else{
+            setMovementData({concept:"", amount:"", jar:""});
+        }
     }, [movementSelected]);
   
     const handleSubmit=(e)=>{

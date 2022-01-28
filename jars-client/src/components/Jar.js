@@ -5,6 +5,7 @@ import { jarSelected} from '../actions/currentSelectionActions.js'
 
 export const Jar = ({jar}) => {
     const dispatch= useDispatch();
+   
     
     return (
         <div className="jar">
@@ -14,7 +15,8 @@ export const Jar = ({jar}) => {
                     
                     }}>
             </div>
-             <h4 className="info_jar">${jar.budget}</h4>
+            <div className="info_jar">
+                <h4 className="amount_jar">${jar.percentage}</h4>
                 <div className="jar_actions_container">
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/edit.png")`
@@ -25,6 +27,8 @@ export const Jar = ({jar}) => {
                                 }} onClick={()=>{dispatch(deleteJar(jar._id));}}>
                                 </div>
                 </div>
+
+            </div>
         </div>
     )
 }

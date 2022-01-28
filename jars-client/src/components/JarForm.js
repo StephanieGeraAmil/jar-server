@@ -1,6 +1,7 @@
-import React ,{useState} from 'react'
-import { useDispatch } from 'react-redux';
-import {createJar} from '../actions/JarsActions.js'
+import React ,{useState, useEffect} from 'react'
+import { useDispatch,useSelector } from 'react-redux';
+import {createJar,updateJar} from '../actions/JarsActions.js'
+import {clearJarSelected} from '../actions/currentSelectionActions.js'
 
  const JarForm = () => {
      const [jarData, setJarData]=useState({
@@ -9,15 +10,36 @@ import {createJar} from '../actions/JarsActions.js'
 
      })
     const dispatch= useDispatch();
-    const name=jarData.name;
-    const percentage=jarData.percentage;
+   
+
+
+   
+    const selector=
+        (state) =>(state.currentSelection.jar ? state.currentSelection.jar :null);
+    const jarSelected = useSelector(selector);
+       
+    useEffect(() => {
+       
+    if (jarSelected!=null) {
+       setJarData({percentage:jarSelected.percentage, name: jarSelected.name});
+     }else{
+         setJarData({percentage:"", name:""});
+     }
+    }, [jarSelected]);     
 
   
     const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch(createJar(jarData));
+
+        if (jarSelected) {
+            dispatch(updateJar({_id:jarSelected._id,...jarData}));
+            dispatch(clearJarSelected());
+        }else{
+             dispatch(createJar(jarData));
+        }
+       
         };
-        
+
   
     return (
         <div className="form">
@@ -27,7 +49,7 @@ import {createJar} from '../actions/JarsActions.js'
                   <input  type="text"
                       required
                       className="form-control"
-                      value={name}
+                      value={jarData.name}
                       onChange={(e)=>setJarData({...jarData, name:e.target.value})}
                       />
               </div>
@@ -36,7 +58,7 @@ import {createJar} from '../actions/JarsActions.js'
                   <input 
                       type="text" 
                       className="form-control"
-                      value={percentage}
+                      value={jarData.percentage}
                       onChange={(e)=>setJarData({...jarData, percentage:e.target.value})}
                       />
               </div>

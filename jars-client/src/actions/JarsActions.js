@@ -39,8 +39,9 @@ export const updateJar=(updatedJar)=>async(dispatch)=>{
 }
 export const deleteJar=(jar_id)=>async(dispatch)=>{
     try {
+    
         await api.deleteJar(jar_id);
-        const action={type: actions.DELETE_MOVEMENT,payload:jar_id};
+        const action={type: actions.DELETE_JAR, payload:jar_id};
         dispatch(action);
         
     } catch (error) {

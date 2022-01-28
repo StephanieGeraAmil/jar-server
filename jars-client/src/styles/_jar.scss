@@ -6,4 +6,23 @@
     height: 14vw;
     margin: 1vw;
   }
+  .info_jar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .amount_jar {
+      width: 6vw;
+      height: 3vw;
+    }
+    .jar_actions_container {
+      width: 6vw;
+      height: 2.5vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      .jar_actions {
+        width: 2.5vw;
+      }
+    }
+  }
 }
