@@ -11,6 +11,7 @@ import { useDispatch , useSelector} from 'react-redux';
          is_income:false
 
      })
+    const[actionBeingPerformed,setActionBeingPerformed]=useState("Add Income")
     const dispatch= useDispatch();
      
    
@@ -22,16 +23,20 @@ import { useDispatch , useSelector} from 'react-redux';
         
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar, is_income:movementSelected.is_income});
+            setActionBeingPerformed("Edit");
         }else{
             setMovementData({...movementData, concept:"", amount:"", jar:""});
+            setActionBeingPerformed("Add Income");
         }
     }, [movementSelected]);
   
     const handleSubmit=(e)=>{
         e.preventDefault();
         if (movementSelected) {
+           
             dispatch(actions.updateMovement({_id:movementSelected._id,...movementData}));
             dispatch(clearMovementSelected());
+         
         }else{
             dispatch(actions.createMovement(movementData));
             setMovementData({...movementData,concept:"", amount:"", jar:""});
@@ -71,7 +76,7 @@ import { useDispatch , useSelector} from 'react-redux';
                       />
               </div>
               <div className="form-group mt-5">
-                <input type="submit" value="Add Expense" className="submitButton" />
+                <input type="submit" value={actionBeingPerformed} className="submitButton" />
               </div>           
           </form>
         </div>
