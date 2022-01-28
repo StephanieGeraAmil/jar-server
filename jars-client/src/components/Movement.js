@@ -5,12 +5,14 @@ import { movementSelected} from '../actions/currentSelectionActions.js'
 
  const Movement = ({movement}) => {
      const dispatch= useDispatch();
+
+     const sign=movement.amount>0?'+':'-'
     
     return (
         <div className="movement">
             
             <h4 className="movement_column info_movement">{movement.concept}</h4>
-            <h4 className="movement_column info_movement">${movement.amount}</h4>
+            <h4 className="movement_column info_movement">{sign}${Math.abs(movement.amount)}</h4>
             
             <h4 className="movement_column info_movement">{movement.jar}</h4>
              <div className="movement_column">
