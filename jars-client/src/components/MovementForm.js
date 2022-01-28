@@ -89,7 +89,10 @@ import { useDispatch , useSelector} from 'react-redux';
               </div>
               <div className="form-group mt-5">
                 <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
-              </div>           
+                 <input className="submitButton cancel" value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
+              </div>  
+              
+         
           </form>
         </div>
     )

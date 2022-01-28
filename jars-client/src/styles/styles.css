@@ -245,6 +245,10 @@
   background-color: #ffd166;
 }
 
+.form .form-group .cancel {
+  width: 8vw;
+}
+
 .App {
   background-color: #ffff;
   color: #073b4c;
