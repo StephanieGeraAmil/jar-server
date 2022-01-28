@@ -7,7 +7,8 @@ import { useDispatch , useSelector} from 'react-redux';
      const [movementData, setMovementData]=useState({
          amount:0,
          concept:'',
-         jar:''
+         jar:'',
+         is_income:false
 
      })
     const dispatch= useDispatch();
@@ -17,10 +18,11 @@ import { useDispatch , useSelector} from 'react-redux';
     const movementSelected = useSelector(selector);
        
     useEffect(() => {  
+        console.log(movementData);
         if (movementSelected!=null) {
-        setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
+            setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar, is_income:movementSelected.is_income});
         }else{
-            setMovementData({concept:"", amount:"", jar:""});
+            setMovementData({...movementData, concept:"", amount:"", jar:""});
         }
     }, [movementSelected]);
   
@@ -31,6 +33,7 @@ import { useDispatch , useSelector} from 'react-redux';
             dispatch(clearMovementSelected());
         }else{
             dispatch(actions.createMovement(movementData));
+            setMovementData({concept:"", amount:"", jar:""});
         }
         
         };

@@ -4,14 +4,8 @@ import Balance from './Balance';
 const MidSection = () => {
     return (
         <div className="horizontalSection">
-             {/* <a href="">
-                <div  className="link div_img" style={{
-                        backgroundImage: `url("/imgs/Distribution.png")`
-                        }}>
-                </div>
-             </a> */}
                 <a href="">
-                    <div className="wallet">
+                    <div className="wallet" onClick={()=>{}}>
                         <div  className="direction div_img" style={{
                         backgroundImage: `url("/imgs/in.png")`
                         }}>
@@ -24,7 +18,7 @@ const MidSection = () => {
             </a>
             <Balance/>
              <a href="">
-                 <div className="wallet">
+                 <div className="wallet" onClick={()=>{}}>
                         <div  className="direction div_img" style={{
                         backgroundImage: `url("/imgs/out.png")`
                         }}>

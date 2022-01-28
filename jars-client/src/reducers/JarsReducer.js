@@ -8,7 +8,7 @@ export default (jars=[], action)=>{
         return jars.map((jar)=>jar._id===action.payload._id? action.payload: jar);
 
         case actions.DELETE_JAR:
-        return jars.filter((jar)=>jar._id!==action.payload._id);
+        return jars.filter((jar)=>jar._id!==action.payload);
 
         case actions.FETCH_ALL_JARS:
         return action.payload;

@@ -6,6 +6,7 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
  const JarForm = () => {
      const [jarData, setJarData]=useState({
          percentage:0,
+         balance:0,
          name:''
 
      })
@@ -14,14 +15,14 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
 
 
    
-    const selector=
+    const selectorOfSelectedJar=
         (state) =>(state.currentSelection.jar ? state.currentSelection.jar :null);
-    const jarSelected = useSelector(selector);
+    const jarSelected = useSelector(selectorOfSelectedJar);
        
     useEffect(() => {
        
     if (jarSelected!=null) {
-       setJarData({percentage:jarSelected.percentage, name: jarSelected.name});
+       setJarData({percentage:jarSelected.percentage, balance: jarSelected.balance, name: jarSelected.name});
      }else{
          setJarData({percentage:"", name:""});
      }
@@ -36,6 +37,7 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
             dispatch(clearJarSelected());
         }else{
              dispatch(createJar(jarData));
+             setJarData({...jarData, percentage:"", name:""});
         }
        
         };

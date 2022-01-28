@@ -20,9 +20,10 @@ const App = () =>{
     <div className="App">
       {/* <AddButtonsSection/> */}
       <MidSection/>
+      <MovementForm/>
       <MovementsHistorySection/>
       <JarsSection/>
-      <MovementForm/>
+  
       <JarForm/>
     </div>
   );
