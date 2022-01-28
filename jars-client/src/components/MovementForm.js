@@ -48,6 +48,7 @@ import { useDispatch , useSelector} from 'react-redux';
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
+            console.log(movementData);
             dispatch(actions.createMovement(movementData));
             setMovementData({...movementData,concept:"", amount:0, jar:""});
             dispatch(selectionActions.clearFormPurpose());

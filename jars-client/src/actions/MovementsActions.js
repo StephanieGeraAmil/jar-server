@@ -17,7 +17,8 @@ export const getMovements = ()=>async(dispatch)=>{
 export const createMovement=(movement)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {
-        
+        console.log("in the actions")
+        console.log(movement);
         const {data} =await api.createMovement(movement);
         const action={type: actions.CREATE_MOVEMENT, payload:data};
         dispatch(action);
