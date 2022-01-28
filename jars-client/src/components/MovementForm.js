@@ -1,6 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import * as actions from '../actions/MovementsActions.js'
-import {clearMovementSelected} from '../actions/currentSelectionActions.js'
+import * as selectionActions from '../actions/currentSelectionActions.js'
 import { useDispatch , useSelector} from 'react-redux';
 
  const MovementForm = () => {
@@ -8,25 +8,32 @@ import { useDispatch , useSelector} from 'react-redux';
          amount:0,
          concept:'',
          jar:'',
-         is_income:false
+         is_income:false,
+         id:''
 
      })
-    const[actionBeingPerformed,setActionBeingPerformed]=useState("Add Income")
+   // const[actionBeingPerformed,setActionBeingPerformed]=useState("Add Income")
     const dispatch= useDispatch();
      
    
-    const selector=
+    const selectorMovementSelected=
         (state) =>(state.currentSelection.movement ? state.currentSelection.movement :null);
-    const movementSelected = useSelector(selector);
+    const movementSelected = useSelector(selectorMovementSelected);
+
+    const selectorFormPurpose=
+        (state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null);
+    const actionBeingPerformed = useSelector(selectorFormPurpose);
        
     useEffect(() => {  
         
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar, is_income:movementSelected.is_income});
-            setActionBeingPerformed("Edit");
+            //setActionBeingPerformed("Edit");
+            dispatch(selectionActions.settingFormPurposeToEdit());
         }else{
-            setMovementData({...movementData, concept:"", amount:"", jar:""});
-            setActionBeingPerformed("Add Income");
+            setMovementData({...movementData, id:"",concept:"", amount:"", jar:""});
+            //setActionBeingPerformed("Add Income");
+            //dispatch(selectionActions.clearFormPurpose());
         }
     }, [movementSelected]);
   
@@ -35,11 +42,13 @@ import { useDispatch , useSelector} from 'react-redux';
         if (movementSelected) {
            
             dispatch(actions.updateMovement({_id:movementSelected._id,...movementData}));
-            dispatch(clearMovementSelected());
+            dispatch(selectionActions.clearMovementSelected());
+            dispatch(selectionActions.clearFormPurpose());
          
         }else{
             dispatch(actions.createMovement(movementData));
             setMovementData({...movementData,concept:"", amount:"", jar:""});
+            dispatch(selectionActions.clearFormPurpose());
         }
         
         };
@@ -76,7 +85,7 @@ import { useDispatch , useSelector} from 'react-redux';
                       />
               </div>
               <div className="form-group mt-5">
-                <input type="submit" value={actionBeingPerformed} className="submitButton" />
+                <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
               </div>           
           </form>
         </div>

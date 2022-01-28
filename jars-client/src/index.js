@@ -7,7 +7,6 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducers from './reducers/reducers.js'
 const store= createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
-// const store= createStore(reducers, {jars:[], movements:[]})
 
 
 ReactDOM.render(

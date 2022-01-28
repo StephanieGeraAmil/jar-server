@@ -15,3 +15,10 @@ export const SELECTED_MOVEMENT="selected/selected_movement";
 export const UNSELECTED_MOVEMENT="selected/unselected_movement";
 export const UNSELECTED_JAR="selected/unselected_jar";
 
+export const SETTING_FORM_FOR_INCOME="selected/setting_form_purpose_to_add_income";
+export const SETTING_FORM_FOR_EXPENSE="selected/setting_form_purpose_to_add_expense";
+export const SETTING_FORM_FOR_EDIT="selected/setting_form_purpose_to_edit";
+export const CLEAR_FORM_PURPOSE="selected/clear_form_purpose";
+
+
+

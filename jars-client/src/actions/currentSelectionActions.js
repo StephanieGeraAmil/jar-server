@@ -39,3 +39,46 @@ export const clearJarSelected=()=>(dispatch)=>{
         console.log(error);
     }
 }
+export const settingFormPurposeToIncome=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_INCOME};
+       
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const settingFormPurposeToExpense=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_EXPENSE};
+        
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const settingFormPurposeToEdit=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_EDIT};
+    
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const clearFormPurpose=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.CLEAR_FORM_PURPOSE};
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -9,11 +9,15 @@ import {getMovements} from './actions/MovementsActions.js'
 import {getJars} from './actions/JarsActions.js'
 import MovementForm from './components/MovementForm';
 import JarForm from './components/JarForm';
+
 const App = () =>{
   const dispatch= useDispatch();
   useEffect(()=>{
     dispatch(getMovements());
-    dispatch(getJars());},
+    dispatch(getJars());
+    
+    },
+   
     []);
   //dispatches an action
   return (
@@ -23,7 +27,6 @@ const App = () =>{
       <MovementForm/>
       <MovementsHistorySection/>
       <JarsSection/>
-  
       <JarForm/>
     </div>
   );
