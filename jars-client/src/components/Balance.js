@@ -1,8 +1,16 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import { useSelector} from 'react-redux';
 
 const Balance = () => {
-        const balance=15000
-   
+        
+        const [balance, setBalance]=useState(0)
+        const selector=(state) =>(state.movements ? state.movements:null);
+        const movements = useSelector(selector);
+        useEffect(() => {
+            const reducer=(acc,item)=>acc+item.amount
+            setBalance(movements.reduce(reducer,0))
+        },[movements])
+    
     return (
         <div className="balance">
                 <h4>BALANCE</h4>

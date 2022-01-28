@@ -18,7 +18,7 @@ import { useDispatch , useSelector} from 'react-redux';
     const movementSelected = useSelector(selector);
        
     useEffect(() => {  
-        console.log(movementData);
+        
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar, is_income:movementSelected.is_income});
         }else{
