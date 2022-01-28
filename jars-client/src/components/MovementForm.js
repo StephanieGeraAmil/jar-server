@@ -12,6 +12,7 @@ import { useDispatch , useSelector} from 'react-redux';
 
      })
     const dispatch= useDispatch();
+     
    
     const selector=
         (state) =>(state.currentSelection.movement ? state.currentSelection.movement :null);
@@ -33,7 +34,7 @@ import { useDispatch , useSelector} from 'react-redux';
             dispatch(clearMovementSelected());
         }else{
             dispatch(actions.createMovement(movementData));
-            setMovementData({concept:"", amount:"", jar:""});
+            setMovementData({...movementData,concept:"", amount:"", jar:""});
         }
         
         };

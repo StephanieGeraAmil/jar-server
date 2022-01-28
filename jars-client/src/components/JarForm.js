@@ -24,7 +24,7 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
     if (jarSelected!=null) {
        setJarData({percentage:jarSelected.percentage, balance: jarSelected.balance, name: jarSelected.name});
      }else{
-         setJarData({percentage:"", name:""});
+         setJarData({...jarData,percentage:"", name:""});
      }
     }, [jarSelected]);     
 
