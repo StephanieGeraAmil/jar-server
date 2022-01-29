@@ -25,9 +25,11 @@ export const jarSelected=(currentSelection)=>(dispatch)=>{
         const action={type: actions.SELECTED_JAR, payload:currentSelection};
         dispatch(action);
         
+        
     } catch (error) {
         console.log(error);
     }
+
 }
 export const clearJarSelected=()=>(dispatch)=>{
     try {

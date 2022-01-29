@@ -5,7 +5,7 @@ import { useDispatch , useSelector} from 'react-redux';
 
  const MovementForm = () => {
      const [movementData, setMovementData]=useState({
-         amount:0,
+         amount:'',
          concept:'',
          jar:'',
         
@@ -28,10 +28,9 @@ import { useDispatch , useSelector} from 'react-redux';
         
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
-           
-            dispatch(selectionActions.settingFormPurposeToEdit());
+        
         }else{
-            setMovementData({...movementData, id:"",concept:"", amount:0, jar:""});
+            setMovementData({...movementData, id:"",concept:"", amount:'', jar:""});
 
         }
     }, [movementSelected]);
@@ -39,22 +38,22 @@ import { useDispatch , useSelector} from 'react-redux';
     const handleSubmit=(e)=>{
         e.preventDefault();
         if (movementSelected) {
-            console.log("movementSelected");
-           console.log(movementSelected);
-           console.log("movementData");
-           console.log(movementData);
+        
+   
             dispatch(actions.updateMovement({_id:movementSelected._id,...movementData}));
             dispatch(selectionActions.clearMovementSelected());
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
-            console.log(movementData);
+           
             dispatch(actions.createMovement(movementData));
-            setMovementData({...movementData,concept:"", amount:0, jar:""});
+            setMovementData({...movementData,concept:"", amount:'', jar:""});
             dispatch(selectionActions.clearFormPurpose());
         }
         
         };
+
+ 
         
   
     return (
@@ -75,7 +74,7 @@ import { useDispatch , useSelector} from 'react-redux';
                       type="text" 
                       className="form-control"
                       value={movementData.amount}
-                      onChange={(e)=>setMovementData({...movementData, amount:parseFloat(e.target.value)})}
+                      onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
                       />
               </div>
               <div className="form-group">
@@ -89,7 +88,7 @@ import { useDispatch , useSelector} from 'react-redux';
               </div>
               <div className="form-group mt-5">
                 <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
-                 <input className="submitButton cancel" value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
+                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
               </div>  
               
          

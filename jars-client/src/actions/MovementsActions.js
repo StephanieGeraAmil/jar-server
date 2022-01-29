@@ -35,12 +35,17 @@ export const createMovement=(movement)=>async(dispatch,getState)=>{
 export const updateMovement=(updatedMovement)=>async(dispatch,getState)=>{
   
     try {
+
+        //because for some reason the server is not returning the object after patch
+        let valueOfAmount=parseFloat(updatedMovement.amount);
+        if(isNaN(valueOfAmount))valueOfAmount=0;
+        const movement={...updatedMovement, amount:valueOfAmount}
       
         // const before = getState()
         // console.log(' before dispatch: ', before)
-        await api.updateMovement(updatedMovement);
+        await api.updateMovement(movement);
     
-        const action={type: actions.UPDATE_MOVEMENT, payload:updatedMovement};
+        const action={type: actions.UPDATE_MOVEMENT, payload:movement};
         dispatch(action);
         // const after = getState()
         // console.log(' after dispatch: ', after)

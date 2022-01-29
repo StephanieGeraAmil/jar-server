@@ -1,12 +1,18 @@
 import React from 'react'
 import {useDispatch} from 'react-redux';
 import { deleteMovement} from '../actions/MovementsActions.js'
-import { movementSelected} from '../actions/currentSelectionActions.js'
+import { movementSelected, settingFormPurposeToEdit} from '../actions/currentSelectionActions.js'
 
  const Movement = ({movement}) => {
      const dispatch= useDispatch();
 
      const sign=movement.amount>0?'+':'-'
+
+     const edit=()=>{
+        dispatch(movementSelected(movement));
+        dispatch(settingFormPurposeToEdit());
+     }
+    
     
     return (
         <div className="movement">
@@ -18,7 +24,7 @@ import { movementSelected} from '../actions/currentSelectionActions.js'
              <div className="movement_column">
                     <div  className="movement_actions div_img" style={{
                             backgroundImage: `url("/imgs/edit.png")`
-                            }} onClick={()=>{dispatch(movementSelected(movement));}}>
+                            }} onClick={()=>{edit();}}>
                             </div>
                     <div  className="movement_actions div_img" style={{
                             backgroundImage: `url("/imgs/delete.png")`
