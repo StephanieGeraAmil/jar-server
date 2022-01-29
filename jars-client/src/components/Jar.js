@@ -1,7 +1,9 @@
 import React from 'react'
+
 import {useDispatch} from 'react-redux';
 import { deleteJar} from '../actions/JarsActions.js'
 import { jarSelected} from '../actions/currentSelectionActions.js'
+import { AvaiableOnJar } from './AvaiableOnJar.js';
 
 export const Jar = ({jar}) => {
     const dispatch= useDispatch();
@@ -17,7 +19,7 @@ export const Jar = ({jar}) => {
             </div>
             <div className="info_jar">
                 <h4 className="percentace_jar">%{jar.percentage}</h4>
-                <h4 className="balance_jar">${jar.balance}</h4>
+                <AvaiableOnJar jar={jar}/>
                 <div className="jar_actions_container">
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/edit.png")`

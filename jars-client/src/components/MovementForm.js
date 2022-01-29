@@ -40,47 +40,46 @@ import { useDispatch , useSelector} from 'react-redux';
     }, [movementSelected]);
   
     const handleSubmit=(e)=>{
-        /////////////////////////
-        ///aca tengo que agregar update jars de cada jar afectado por el submit
+
         e.preventDefault();
         if (movementSelected) {
-            const wasExpense=(movementSelected.amount<0);
-            const isExpenseNow=(movementData.amount.slice(0,1)=='-');
+            // const wasExpense=(movementSelected.amount<0);
+            // const isExpenseNow=(movementData.amount.slice(0,1)=='-');
      
-            if(wasExpense!=isExpenseNow){
-                console.log("you cant change the type of movement, you can delete the old one and create a new one")
-                return}
-            const diff=movementData.amount-movementSelected.amount;
+            // if(wasExpense!=isExpenseNow){
+            //     console.log("you cant change the type of movement, you can delete the old one and create a new one")
+            //     return}
+            // const diff=movementData.amount-movementSelected.amount;
             dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));
             
-            movementSelected.jar.map(item=>{
-               const actualJar= jars.find(element=>element._id==item)
-               const amountToTheJar= (actualJar.percentage*diff)/100+actualJar.balance;
-               console.log(amountToTheJar);
-               dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
-            });
+            // movementSelected.jar.map(item=>{
+            //    const actualJar= jars.find(element=>element._id==item)
+            //    const amountToTheJar= (actualJar.percentage*diff)/100+actualJar.balance;
+            //    console.log(amountToTheJar);
+            //    dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
+            // });
             dispatch(selectionActions.clearMovementSelected());
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
           
-            movementData.jar.map(item=>{
+            // movementData.jar.map(item=>{
                 
-               const actualJar= jars.find(element=>element._id==item)
+            //    const actualJar= jars.find(element=>element==item)
               
-               let amountToTheJar;
-               if(actionBeingPerformed=="Add Expense"){
-                   amountToTheJar= movementData.amount/movementData.jar.length+actualJar.balance;
-               }else{
-                   if(movementData.jar.length!=jars.length){ 
-                       console.log(" Incomes need to be aplied to all the jars")
-                       return
-                    }
-                amountToTheJar= (actualJar.percentage*movementData.amount)/100+actualJar.balance;
-               }
+            //    let amountToTheJar;
+            //    if(actionBeingPerformed=="Add Expense"){
+            //        amountToTheJar= movementData.amount/movementData.jar.length+actualJar.balance;
+            //    }else{
+            //        if(movementData.jar.length!=jars.length){ 
+            //            console.log(" Incomes need to be aplied to all the jars")
+            //            return
+            //         }
+            //     amountToTheJar= (actualJar.percentage*movementData.amount)/100+actualJar.balance;
+            //    }
                
-               dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
-            });
+            //    dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
+            // });
             dispatch(movementActions.createMovement(movementData));
           
             setMovementData({...movementData,concept:"", amount:'', jar:[]});
@@ -90,10 +89,11 @@ import { useDispatch , useSelector} from 'react-redux';
     };
     const handleCheck = (e) => {
     let updatedList = [...movementData.jar];
+  
     if (e.target.checked) {
-      updatedList = [...movementData.jar, e.target.value];
+      updatedList = [...movementData.jar, jars.find(item=>item._id==e.target.value)];
     } else {
-      updatedList.splice(movementData.jar.indexOf(e.target.value), 1);
+      updatedList.splice(movementData.jar.filter(item=>item._id!=e.target.value), 1);
     }
     setMovementData({...movementData, jar:updatedList})
   };
@@ -125,7 +125,7 @@ import { useDispatch , useSelector} from 'react-redux';
                 
                     <div className="checkbox_list"> 
                      {jars.map( item => <div  key={item._id} className="checkbox_item" >
-                                    <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.indexOf(item._id)!=-1 ?true:false}/> 
+                                    <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.indexOf(item)!=-1 ?true:false}/> 
                                     <span>{item.name} </span>
                              </div>)}
                     </div>
