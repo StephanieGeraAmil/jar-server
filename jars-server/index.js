@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import movementsRouter from './routes/movements.js';
 import jarsRouter from './routes/jars.js';
+import transactionsRouter from './routes/transactions.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(cors());
 //conecting to a BD
 app.use('/movements',movementsRouter);
 app.use('/jars',jarsRouter);
+app.use('/transactions',transactionsRouter);
 //app.use('/movements', router)
 //initial greeting
 app.get('/',(req,res)=>{ res.send('Hello to the Jars Aplication')});

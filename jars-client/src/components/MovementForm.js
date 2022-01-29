@@ -15,7 +15,7 @@ import { useDispatch , useSelector} from 'react-redux';
  
     const dispatch= useDispatch();
      
-     const selectorJarSelected=
+    const selectorJarSelected=
         (state) =>(state.jars ? state.jars :null);
     const jars = useSelector(selectorJarSelected);
 
@@ -43,45 +43,13 @@ import { useDispatch , useSelector} from 'react-redux';
 
         e.preventDefault();
         if (movementSelected) {
-            // const wasExpense=(movementSelected.amount<0);
-            // const isExpenseNow=(movementData.amount.slice(0,1)=='-');
-     
-            // if(wasExpense!=isExpenseNow){
-            //     console.log("you cant change the type of movement, you can delete the old one and create a new one")
-            //     return}
-            // const diff=movementData.amount-movementSelected.amount;
-            dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));
-            
-            // movementSelected.jar.map(item=>{
-            //    const actualJar= jars.find(element=>element._id==item)
-            //    const amountToTheJar= (actualJar.percentage*diff)/100+actualJar.balance;
-            //    console.log(amountToTheJar);
-            //    dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
-            // });
+         
+            dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));      
             dispatch(selectionActions.clearMovementSelected());
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
-          
-            // movementData.jar.map(item=>{
-                
-            //    const actualJar= jars.find(element=>element==item)
-              
-            //    let amountToTheJar;
-            //    if(actionBeingPerformed=="Add Expense"){
-            //        amountToTheJar= movementData.amount/movementData.jar.length+actualJar.balance;
-            //    }else{
-            //        if(movementData.jar.length!=jars.length){ 
-            //            console.log(" Incomes need to be aplied to all the jars")
-            //            return
-            //         }
-            //     amountToTheJar= (actualJar.percentage*movementData.amount)/100+actualJar.balance;
-            //    }
-               
-            //    dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
-            // });
-            dispatch(movementActions.createMovement(movementData));
-          
+            dispatch(movementActions.createMovement(movementData));      
             setMovementData({...movementData,concept:"", amount:'', jar:[]});
             dispatch(selectionActions.clearFormPurpose());
         }
