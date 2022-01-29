@@ -1,10 +1,15 @@
 import React from 'react'
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { deleteMovement} from '../actions/MovementsActions.js'
 import { movementSelected, settingFormPurposeToEdit} from '../actions/currentSelectionActions.js'
 
  const Movement = ({movement}) => {
-     const dispatch= useDispatch();
+    const dispatch= useDispatch();
+    const selectorJarSelected=
+        (state) =>(state.jars ? state.jars :null);
+    const jars = useSelector(selectorJarSelected);
+
+   
 
      const sign=movement.amount>0?'+':'-'
 
@@ -20,7 +25,7 @@ import { movementSelected, settingFormPurposeToEdit} from '../actions/currentSel
             <h4 className="movement_column info_movement">{movement.concept}</h4>
             <h4 className="movement_column info_movement">{sign}${Math.abs(movement.amount)}</h4>
             
-            <h4 className="movement_column info_movement">{movement.jar}</h4>
+            <h4 className="movement_column info_movement jars_asociated">{jars.filter(jar=>movement.jar.indexOf(jar._id)!=-1).map(jar=>jar.name + ", ")}</h4>
              <div className="movement_column">
                     <div  className="movement_actions div_img" style={{
                             backgroundImage: `url("/imgs/edit.png")`

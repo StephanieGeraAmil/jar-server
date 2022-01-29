@@ -77,6 +77,11 @@
   font-size: 4vw;
 }
 
+.movement .jars_asociated {
+  font-size: 2.2vw;
+  width: 6vw;
+}
+
 .movement .movement_actions {
   width: 3.5vw;
   height: 3.5vw;
@@ -201,14 +206,20 @@
 }
 
 .form {
+  width: 60%;
+  margin: auto;
+}
+
+.form form {
+  width: 100%;
   margin-bottom: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -216,7 +227,7 @@
       align-content: center;
 }
 
-.form .form-group {
+.form form .form-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -230,14 +241,59 @@
   margin-bottom: 2vw;
 }
 
-.form .form-group .form-control {
+.form form .form-group .form-control {
   border-radius: 20vw;
   border-color: #073b4c;
   border-width: 0.1vw;
-  width: 50%;
+  width: 60%;
 }
 
-.form .form-group .submitButton {
+.form form .form-group .jars_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 10vw;
+}
+
+.form form .form-group .checkbox_list {
+  padding: 1vw;
+  width: 80%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+}
+
+.form form .form-group .checkbox_list .checkbox_item {
+  font-size: 3vw;
+  padding: 0 1vw;
+}
+
+.form form .bottom {
+  height: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form form .bottom .submitButton {
+  font-size: 3vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  width: 25vw;
   border-radius: 20vw;
   border-color: #ffd166;
   border-style: solid;
@@ -245,14 +301,9 @@
   background-color: #ffd166;
 }
 
-.form .form-group .cancel {
-  width: 8vw;
-}
-
-.form .form-group .dropdown {
-  border-radius: 2.5vw;
-  width: 52%;
-  padding: 1vw;
+.form form .bottom .cancel {
+  font-size: 3vw;
+  width: 11vw;
 }
 
 .App {

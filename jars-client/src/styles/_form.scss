@@ -1,43 +1,74 @@
 .form {
-  // border-radius: 5vw;
-  // border-color: $accent-color;
-  margin-bottom: 2vw;
-  // padding: 2vw;
-  // border-style: solid;
-  // border-width: 0.4vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  .form-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  form {
+    width: 100%;
+
+    // border-radius: 5vw;
+    // border-color: $accent-color;
     margin-bottom: 2vw;
-    .form-control {
-      border-radius: $boxRadius;
-      border-color: $base-color;
-      border-width: 0.1vw;
-      width: 50%;
+    // padding: 2vw;
+    // border-style: solid;
+    // border-width: 0.4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+
+    .form-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 2vw;
+      .form-control {
+        border-radius: $boxRadius;
+        border-color: $base-color;
+        border-width: 0.1vw;
+        width: 60%;
+      }
+
+      .jars_list {
+        display: flex;
+        flex-direction: row;
+        height: 10vw;
+      }
+
+      .checkbox_list {
+        padding: 1vw;
+        width: 80%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+
+        .checkbox_item {
+          font-size: 3vw;
+          padding: 0 1vw;
+        }
+      }
     }
-    .submitButton {
-      border-radius: $boxRadius;
-      border-color: $accent-color;
+    .bottom {
+      height: 6vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .submitButton {
+        font-size: 3vw;
+        font-family: $font;
+        font-weight: normal;
+        width: 25vw;
 
-      border-style: solid;
-      border-width: 0.4vw;
-      background-color: $accent-color;
-    }
-    .cancel {
-      width: 8vw;
-    }
+        border-radius: $boxRadius;
+        border-color: $accent-color;
 
-    .dropdown {
-      border-radius: 2.5vw;
-
-      width: 52%;
-
-      padding: 1vw;
+        border-style: solid;
+        border-width: 0.4vw;
+        background-color: $accent-color;
+      }
+      .cancel {
+        font-size: 3vw;
+        width: 11vw;
+      }
     }
   }
 }

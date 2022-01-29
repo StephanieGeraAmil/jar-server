@@ -33,7 +33,7 @@ import { useDispatch , useSelector} from 'react-redux';
         
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
-        
+          
         }else{
             setMovementData({...movementData, id:"",concept:"", amount:'', jar:[]});
 
@@ -41,22 +41,37 @@ import { useDispatch , useSelector} from 'react-redux';
     }, [movementSelected]);
   
     const handleSubmit=(e)=>{
+        /////////////////////////
+        ///aca tengo que agregar update jars de cada jar afectado por el submit
         e.preventDefault();
         if (movementSelected) {
-        
+           
    
             dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));
             dispatch(selectionActions.clearMovementSelected());
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
+
+             console.log(movementData);
            
             dispatch(movementActions.createMovement(movementData));
             setMovementData({...movementData,concept:"", amount:'', jar:[]});
             dispatch(selectionActions.clearFormPurpose());
         }
         
-        };
+    };
+    const handleCheck = (e) => {
+    let updatedList = [...movementData.jar];
+    if (e.target.checked) {
+      updatedList = [...movementData.jar, e.target.value];
+    } else {
+      updatedList.splice(movementData.jar.indexOf(e.target.value), 1);
+    }
+   
+
+    setMovementData({...movementData, jar:updatedList})
+  };
 
  
         
@@ -82,7 +97,7 @@ import { useDispatch , useSelector} from 'react-redux';
                       onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
                       />
               </div>
-              <div className="form-group">
+              <div className="form-group jars_list">
                   <label className="m-2">Jar: </label>
                   {/* <input 
                       type="text" 
@@ -90,9 +105,20 @@ import { useDispatch , useSelector} from 'react-redux';
                       value={movementData.jar}
                       onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}
                       /> */}
-                    <select  className="form-control dropdown" value={movementData.jar}   onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}>
+                    {/* <select  className="form-control dropdown" value={movementData.jar}   onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}>
                         {jars.map(item=><option  key={item._id}>{item.name}</option>)}
-                    </select>
+                    </select> */}
+                    <div className="checkbox_list"> 
+                     {jars.map( item => <div  key={item._id} className="checkbox_item" >
+                         {movementData.jar.indexOf(item._id)!=-1 ?
+                                                 <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked/> 
+                                                 :
+                                                 <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} />}
+                                    
+                                                 
+                                                 <span>{item.name} </span>
+                                    </div>)}
+                    </div>
 
 
 
@@ -100,7 +126,7 @@ import { useDispatch , useSelector} from 'react-redux';
 
 
 
-              <div className="form-group mt-5">
+              <div className="bottom mt-5">
                 <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
                  <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
               </div>  
