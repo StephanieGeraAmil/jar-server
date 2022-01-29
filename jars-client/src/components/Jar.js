@@ -11,15 +11,18 @@ export const Jar = ({jar}) => {
     
     return (
         <div className="jar">
-            <h4 className="info_jar">{jar.name}</h4>
+            <div className="top_of_jar">
+                <h4 className="name_jar">{jar.name}</h4>
+                <h5 className="percentace_jar">%{jar.percentage}</h5>
+            </div>
             <div  className="jar_img div_img" style={{
                     backgroundImage: `url("/imgs/jar3.png")`
                     
                     }}>
             </div>
-            <div className="info_jar">
-                <h4 className="percentace_jar">%{jar.percentage}</h4>
-                <AvaiableOnJar jar={jar}/>
+           
+            <div className="bottom_of_jar">
+                 <AvaiableOnJar jar={jar}/>
                 <div className="jar_actions_container">
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/edit.png")`

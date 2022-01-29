@@ -61,7 +61,12 @@
 }
 
 .movement .movement_column {
-  width: 10vw;
+  width: 18%;
+  font-size: 4vw;
+  padding: 2vw;
+}
+
+.movement .movement_actions_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,22 +74,24 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
 
-.movement .info_movement {
-  font-size: 4vw;
+.movement .movement_actions_container .movement_actions {
+  width: 3vw;
+  height: 3vw;
 }
 
-.movement .jars_asociated {
-  font-size: 2.2vw;
-  width: 6vw;
-}
-
-.movement .movement_actions {
-  width: 3.5vw;
-  height: 3.5vw;
+.movement .movement_column_big {
+  width: 46%;
+  font-size: 2.6vw;
+  margin: 0;
+  padding: 2vw;
+  display: flexbox;
 }
 
 .movement_history {
@@ -129,35 +136,68 @@
 }
 
 .jar {
-  height: 18vw;
+  height: 20vw;
   width: 15vw;
 }
 
-.jar .jar_img {
-  height: 14vw;
-  margin: 1vw;
-}
-
-.jar .info_jar {
+.jar .top_of_jar {
+  height: 5vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
-.jar .info_jar .amount_jar {
+.jar .top_of_jar .name_jar {
+  font-size: 3vw;
+}
+
+.jar .top_of_jar .percentace_jar {
+  margin: 0;
+  padding: 0;
+  font-size: 2vw;
+}
+
+.jar .jar_img {
+  height: 12vw;
+  margin: 1vw;
+}
+
+.jar .bottom_of_jar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.jar .bottom_of_jar .amount_jar {
   width: 6vw;
   height: 3vw;
 }
 
-.jar .info_jar .jar_actions_container {
+.jar .bottom_of_jar .jar_actions_container {
   width: 6vw;
-  height: 2.5vw;
+  height: 3.5vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,8 +210,9 @@
           justify-content: flex-end;
 }
 
-.jar .info_jar .jar_actions_container .jar_actions {
-  width: 2.5vw;
+.jar .bottom_of_jar .jar_actions_container .jar_actions {
+  margin: 0 0.8vw;
+  width: 3vw;
 }
 
 .link {

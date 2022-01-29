@@ -65,9 +65,12 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
                       />
               </div>
          
-              <div className="form-group mt-5">
+            
+
+              <div className="bottom mt-5">
                 <input type="submit" value="Add Jar" className="submitButton" />
-              </div>           
+                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ }}/>
+              </div>            
           </form>
         </div>
     )

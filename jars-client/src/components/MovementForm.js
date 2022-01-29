@@ -134,8 +134,6 @@ import { useDispatch , useSelector} from 'react-redux';
 
               </div>
 
-
-
               <div className="bottom mt-5">
                 <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
                  <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
