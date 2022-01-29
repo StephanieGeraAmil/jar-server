@@ -52,8 +52,7 @@ import { useDispatch , useSelector} from 'react-redux';
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
-
-             console.log(movementData);
+            
            
             dispatch(movementActions.createMovement(movementData));
             setMovementData({...movementData,concept:"", amount:'', jar:[]});
@@ -68,8 +67,6 @@ import { useDispatch , useSelector} from 'react-redux';
     } else {
       updatedList.splice(movementData.jar.indexOf(e.target.value), 1);
     }
-   
-
     setMovementData({...movementData, jar:updatedList})
   };
 
@@ -93,7 +90,7 @@ import { useDispatch , useSelector} from 'react-redux';
                   <input 
                       type="text" 
                       className="form-control"
-                      value={movementData.amount}
+                      value={actionBeingPerformed=="Add Expense" ? "-" + movementData.amount: movementData.amount}
                       onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
                       />
               </div>
@@ -110,11 +107,9 @@ import { useDispatch , useSelector} from 'react-redux';
                     </select> */}
                     <div className="checkbox_list"> 
                      {jars.map( item => <div  key={item._id} className="checkbox_item" >
-                         {movementData.jar.indexOf(item._id)!=-1 ?
-                                                 <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked/> 
-                                                 :
-                                                 <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} />}
-                                    
+  
+                                                 <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.indexOf(item._id)!=-1 ?true:false}/> 
+                                              
                                                  
                                                  <span>{item.name} </span>
                                     </div>)}

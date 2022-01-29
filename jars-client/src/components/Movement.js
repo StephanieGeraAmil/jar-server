@@ -17,6 +17,8 @@ import { movementSelected, settingFormPurposeToEdit} from '../actions/currentSel
         dispatch(movementSelected(movement));
         dispatch(settingFormPurposeToEdit());
      }
+
+   
     
     
     return (
