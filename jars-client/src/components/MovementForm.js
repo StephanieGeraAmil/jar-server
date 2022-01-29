@@ -1,5 +1,6 @@
 import React ,{useState,useEffect} from 'react'
-import * as actions from '../actions/MovementsActions.js'
+import * as movementActions from '../actions/MovementsActions.js'
+//import * as jarActions from '../actions/MovementsActions.js'
 import * as selectionActions from '../actions/currentSelectionActions.js'
 import { useDispatch , useSelector} from 'react-redux';
 
@@ -7,7 +8,7 @@ import { useDispatch , useSelector} from 'react-redux';
      const [movementData, setMovementData]=useState({
          amount:'',
          concept:'',
-         jar:'',
+         jar:[],
         
          id:''
 
@@ -15,6 +16,10 @@ import { useDispatch , useSelector} from 'react-redux';
  
     const dispatch= useDispatch();
      
+     const selectorJarSelected=
+        (state) =>(state.jars ? state.jars :null);
+    const jars = useSelector(selectorJarSelected);
+
    
     const selectorMovementSelected=
         (state) =>(state.currentSelection.movement ? state.currentSelection.movement :null);
@@ -30,7 +35,7 @@ import { useDispatch , useSelector} from 'react-redux';
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
         
         }else{
-            setMovementData({...movementData, id:"",concept:"", amount:'', jar:""});
+            setMovementData({...movementData, id:"",concept:"", amount:'', jar:[]});
 
         }
     }, [movementSelected]);
@@ -40,14 +45,14 @@ import { useDispatch , useSelector} from 'react-redux';
         if (movementSelected) {
         
    
-            dispatch(actions.updateMovement({_id:movementSelected._id,...movementData}));
+            dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));
             dispatch(selectionActions.clearMovementSelected());
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
            
-            dispatch(actions.createMovement(movementData));
-            setMovementData({...movementData,concept:"", amount:'', jar:""});
+            dispatch(movementActions.createMovement(movementData));
+            setMovementData({...movementData,concept:"", amount:'', jar:[]});
             dispatch(selectionActions.clearFormPurpose());
         }
         
@@ -79,13 +84,22 @@ import { useDispatch , useSelector} from 'react-redux';
               </div>
               <div className="form-group">
                   <label className="m-2">Jar: </label>
-                  <input 
+                  {/* <input 
                       type="text" 
                       className="form-control"
                       value={movementData.jar}
                       onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}
-                      />
+                      /> */}
+                    <select  className="form-control dropdown" value={movementData.jar}   onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}>
+                        {jars.map(item=><option  key={item._id}>{item.name}</option>)}
+                    </select>
+
+
+
               </div>
+
+
+
               <div className="form-group mt-5">
                 <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
                  <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>

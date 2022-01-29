@@ -249,6 +249,12 @@
   width: 8vw;
 }
 
+.form .form-group .dropdown {
+  border-radius: 2.5vw;
+  width: 52%;
+  padding: 1vw;
+}
+
 .App {
   background-color: #ffff;
   color: #073b4c;
