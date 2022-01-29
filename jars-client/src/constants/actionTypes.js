@@ -20,5 +20,9 @@ export const SETTING_FORM_FOR_EXPENSE="selected/setting_form_purpose_to_add_expe
 export const SETTING_FORM_FOR_EDIT="selected/setting_form_purpose_to_edit";
 export const CLEAR_FORM_PURPOSE="selected/clear_form_purpose";
 
+export const FETCH_ALL_TRANSACTIONS= "transaction/fetch_all_transactions";
+export const CREATE_TRANSACTION="transaction/create_transaction";
+export const DELETE_TRANSACTION= "transaction/delete_transaction";
+
 
 

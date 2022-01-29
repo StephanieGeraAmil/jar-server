@@ -9,3 +9,7 @@ export const fetchJars=()=>axios.get(jars_url);
 export const createJar=(newJar)=> axios.post(jars_url, newJar);
 export const updateJar=(updatedJar)=> axios.patch(`${jars_url}/${updatedJar._id}`, updatedJar);
 export const deleteJar=(deleteJarId)=> axios.delete(`${jars_url}/${deleteJarId}`);
+const transactions_url= "http://localhost:5500/transactions";
+export const fetchTransactions=()=>axios.get(transactions_url);
+export const createTransaction=(newTransaction)=> axios.post(transactions_url, newTransaction);
+export const deleteTransaction=(deleteTransactionId)=> axios.delete(`${transactions_url}/${deleteTransactionId}`);

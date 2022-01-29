@@ -16,28 +16,29 @@ const MidSection = () => {
     }
     return (
         <div className="horizontalSection">
-            <div className="wallet" onClick={()=>{addingIncome();}}>
-                <div  className="direction div_img" style={{
-                backgroundImage: `url("/imgs/in.png")`
-                }} >
-                </div>
-                <div  className="picture div_img" style={{
-                backgroundImage: `url("/imgs/wallet.png")`
-                }}>
-                </div>
-            </div>
-            
             <Balance/>
-           
-            <div className="wallet" onClick={()=>{addingExpense();}}>
+            <div className='wallet_section'>
+                <div className="wallet" onClick={()=>{addingIncome();}}>
                     <div  className="direction div_img" style={{
-                    backgroundImage: `url("/imgs/out.png")`
-                    }}>
+                    backgroundImage: `url("/imgs/in.png")`
+                    }} >
                     </div>
                     <div  className="picture div_img" style={{
                     backgroundImage: `url("/imgs/wallet.png")`
                     }}>
                     </div>
+                </div>
+            
+                <div className="wallet" onClick={()=>{addingExpense();}}>
+                        <div  className="direction div_img" style={{
+                        backgroundImage: `url("/imgs/out.png")`
+                        }}>
+                        </div>
+                        <div  className="picture div_img" style={{
+                        backgroundImage: `url("/imgs/wallet.png")`
+                        }}>
+                        </div>
+                </div>
             </div>
         </div>
     )

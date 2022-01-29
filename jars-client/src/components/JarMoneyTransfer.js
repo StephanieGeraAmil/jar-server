@@ -1,9 +1,9 @@
 import React ,{useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import * as transferActions from '../actions/TransferActions.js'
-import * as selectionActions from '../actions/currentSelectionActions.js'
+// import * as selectionActions from '../actions/currentSelectionActions.js'
 
- const JarMoneyTransfer = ({originJar}) => {
+ const JarMoneyTransfer = ({originJar={name:'Give',_id:'111'}}) => {
     const [destinationJar, setDestinationJar]=useState({});
     const [amount, setAmount]=useState('');
     const dispatch= useDispatch();
@@ -14,9 +14,13 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
   
     const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch(addTransfer(originJar._id,destinationJar._id,amount));
+        dispatch(transferActions.createTransference({origin:originJar._id,destination:destinationJar._id,amount}));
         setDestinationJar({});
         };
+
+    const handleDropdownChange=(e)=>{
+        setDestinationJar(jars.find(item=>item.name==e.target.value))
+    }
 
   
     return (
@@ -31,21 +35,21 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
                       readOnly={true}
                       />
               </div>
+
+ 
+
               <div className="form-group">
                   <label className="m-2">DestinationJar: </label>
-                  <input 
-                      type="text" 
-                      className="form-control"
-                      value={destinationJar._id}
-                      onChange={(e)=>setDestinationJar(e.target.value)}
-                      />
+                  <select  className="form-control dropdown" value={destinationJar._id}   onChange={(e)=>handleDropdownChange(e)}>
+                        {jars.map(item=><option  key={item._id}>{item.name}</option>)}
+                    </select>
               </div>
                  <div className="form-group">
                   <label className="m-2">Amount: </label>
                   <input 
                       type="text" 
                       className="form-control"
-                      value={jarData.percentage}
+                      value={amount}
                       onChange={(e)=>setAmount(e.target.value)}
                       />
               </div>

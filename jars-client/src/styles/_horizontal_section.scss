@@ -7,4 +7,12 @@
   justify-content: space-around;
   margin-bottom: $standardMargin * 1.5;
   margin-top: $standardMargin * 1.5;
+  .wallet_section {
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 5vw;
+  }
 }

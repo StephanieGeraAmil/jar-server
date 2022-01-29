@@ -22,7 +22,7 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
        };
 
     const handleUpdate=(e)=>{
-        updatedJars.map(updatedJar=> updatedJar._id==jar._id ? updatedJar.percentage=e.target.value)
+       // updatedJars.map(updatedJar=> updatedJar._id==jar._id ? updatedJar.percentage=e.target.value)
     }
 
   

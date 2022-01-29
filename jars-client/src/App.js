@@ -10,14 +10,17 @@ import {getJars} from './actions/JarsActions.js'
 import MovementForm from './components/MovementForm';
 import JarForm from './components/JarForm';
 
+
 const App = () =>{
   const dispatch= useDispatch();
   const selectorFormPurpose=
         (state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null);
   const actionBeingPerformed = useSelector(selectorFormPurpose);
+
   useEffect(()=>{
     dispatch(getMovements());
     dispatch(getJars());
+   
     
     },
    
@@ -31,6 +34,7 @@ const App = () =>{
       <MovementsHistorySection/>
       <JarsSection/>
       <JarForm/>
+      
     </div>
   );
 }

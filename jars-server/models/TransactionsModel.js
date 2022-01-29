@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const transactionSchema= mongoose.Schema(
     {
-        origin: {type:Object, required:true},
-        destination:  {type:Object, required:true},
+        origin: {type:String, required:true},
+        destination:  {type:String, required:true},
         amount:  {type:Number, default:0},
         date:{type:Date, default:new Date()},
      
