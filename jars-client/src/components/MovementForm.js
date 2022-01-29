@@ -1,6 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import * as movementActions from '../actions/MovementsActions.js'
-//import * as jarActions from '../actions/MovementsActions.js'
+import * as jarActions from '../actions/JarsActions.js'
 import * as selectionActions from '../actions/currentSelectionActions.js'
 import { useDispatch , useSelector} from 'react-redux';
 
@@ -9,7 +9,6 @@ import { useDispatch , useSelector} from 'react-redux';
          amount:'',
          concept:'',
          jar:[],
-        
          id:''
 
      })
@@ -45,16 +44,45 @@ import { useDispatch , useSelector} from 'react-redux';
         ///aca tengo que agregar update jars de cada jar afectado por el submit
         e.preventDefault();
         if (movementSelected) {
-           
-   
+            const wasExpense=(movementSelected.amount<0);
+            const isExpenseNow=(movementData.amount.slice(0,1)=='-');
+     
+            if(wasExpense!=isExpenseNow){
+                console.log("you cant change the type of movement, you can delete the old one and create a new one")
+                return}
+            const diff=movementData.amount-movementSelected.amount;
             dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));
+            
+            movementSelected.jar.map(item=>{
+               const actualJar= jars.find(element=>element._id==item)
+               const amountToTheJar= (actualJar.percentage*diff)/100+actualJar.balance;
+               console.log(amountToTheJar);
+               dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
+            });
             dispatch(selectionActions.clearMovementSelected());
             dispatch(selectionActions.clearFormPurpose());
          
         }else{
-            
-           
+          
+            movementData.jar.map(item=>{
+                
+               const actualJar= jars.find(element=>element._id==item)
+              
+               let amountToTheJar;
+               if(actionBeingPerformed=="Add Expense"){
+                   amountToTheJar= movementData.amount/movementData.jar.length+actualJar.balance;
+               }else{
+                   if(movementData.jar.length!=jars.length){ 
+                       console.log(" Incomes need to be aplied to all the jars")
+                       return
+                    }
+                amountToTheJar= (actualJar.percentage*movementData.amount)/100+actualJar.balance;
+               }
+               
+               dispatch(jarActions.updateJar({...actualJar,balance:amountToTheJar}));    
+            });
             dispatch(movementActions.createMovement(movementData));
+          
             setMovementData({...movementData,concept:"", amount:'', jar:[]});
             dispatch(selectionActions.clearFormPurpose());
         }
@@ -69,9 +97,7 @@ import { useDispatch , useSelector} from 'react-redux';
     }
     setMovementData({...movementData, jar:updatedList})
   };
-
  
-        
   
     return (
         <div className="form">
@@ -90,29 +116,18 @@ import { useDispatch , useSelector} from 'react-redux';
                   <input 
                       type="text" 
                       className="form-control"
-                      value={actionBeingPerformed=="Add Expense" ? "-" + movementData.amount: movementData.amount}
+                      value={movementData.amount}
                       onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
                       />
               </div>
               <div className="form-group jars_list">
                   <label className="m-2">Jar: </label>
-                  {/* <input 
-                      type="text" 
-                      className="form-control"
-                      value={movementData.jar}
-                      onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}
-                      /> */}
-                    {/* <select  className="form-control dropdown" value={movementData.jar}   onChange={(e)=>setMovementData({...movementData, jar:e.target.value})}>
-                        {jars.map(item=><option  key={item._id}>{item.name}</option>)}
-                    </select> */}
+                
                     <div className="checkbox_list"> 
                      {jars.map( item => <div  key={item._id} className="checkbox_item" >
-  
-                                                 <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.indexOf(item._id)!=-1 ?true:false}/> 
-                                              
-                                                 
-                                                 <span>{item.name} </span>
-                                    </div>)}
+                                    <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.indexOf(item._id)!=-1 ?true:false}/> 
+                                    <span>{item.name} </span>
+                             </div>)}
                     </div>
 
 
