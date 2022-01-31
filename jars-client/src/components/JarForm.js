@@ -1,7 +1,7 @@
 import React ,{useState, useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createJar,updateJar} from '../actions/JarsActions.js'
-import {clearJarSelected} from '../actions/currentSelectionActions.js'
+import {clearJarSelected,clearFormPurpose} from '../actions/currentSelectionActions.js'
 
  const JarForm = () => {
      const [jarData, setJarData]=useState({
@@ -69,7 +69,7 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
 
               <div className="bottom mt-5">
                 <input type="submit" value="Add Jar" className="submitButton" />
-                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ }}/>
+                                <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(clearFormPurpose());}}/>
               </div>            
           </form>
         </div>

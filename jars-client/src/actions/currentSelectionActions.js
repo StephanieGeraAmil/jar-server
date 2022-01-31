@@ -63,10 +63,10 @@ export const settingFormPurposeToExpense=()=>(dispatch)=>{
         console.log(error);
     }
 }
-export const settingFormPurposeToEdit=()=>(dispatch)=>{
+export const settingFormPurposeToEditMovement=()=>(dispatch)=>{
     try {
        
-        const action={type: actions.SETTING_FORM_FOR_EDIT};
+        const action={type: actions.SETTING_FORM_FOR_EDIT_MOVEMENT};
     
         dispatch(action);
         
@@ -74,6 +74,43 @@ export const settingFormPurposeToEdit=()=>(dispatch)=>{
         console.log(error);
     }
 }
+export const settingFormPurposeToEditJar=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_EDIT_JAR};
+    
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+export const settingFormPurposeToTransferMoneyToJar=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_TRANSER_MONEY};
+    
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+export const settingFormPurposeToDistributePercentagesOfJars=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_DISTRIBUTE_PERCENTAGES};
+    
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const clearFormPurpose=()=>(dispatch)=>{
     try {
        
@@ -84,3 +121,4 @@ export const clearFormPurpose=()=>(dispatch)=>{
         console.log(error);
     }
 }
+

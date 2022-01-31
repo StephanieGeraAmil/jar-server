@@ -13,13 +13,27 @@ export default (selected={movement: null, jar:null, formPurpose:null}, action)=>
         case  actions.UNSELECTED_JAR:
         return {...selected,jar: null};
 
+
+
         case  actions.SETTING_FORM_FOR_INCOME:
         return {...selected,formPurpose: "Add Income"};
+        
         case  actions.SETTING_FORM_FOR_EXPENSE:
         return {...selected,formPurpose: "Add Expense"};
-         case  actions.SETTING_FORM_FOR_EDIT:
-        return {...selected,formPurpose: "Edit"};
-         case  actions.CLEAR_FORM_PURPOSE:
+        
+        case  actions.SETTING_FORM_FOR_EDIT_MOVEMENT:
+        return {...selected,formPurpose: "Edit Movement"};
+        
+        case  actions.SETTING_FORM_FOR_EDIT_JAR:
+        return {...selected,formPurpose: "Edit Jar"};
+        
+        case  actions.SETTING_FORM_FOR_DISTRIBUTE_PERCENTAGES:
+        return {...selected,formPurpose: "Distribute Percentage"};
+        
+        case  actions.SETTING_FORM_FOR_TRANSER_MONEY:
+        return {...selected,formPurpose: "Transfer Money"};
+        
+        case  actions.CLEAR_FORM_PURPOSE:
         return {...selected,formPurpose: null};
 
 

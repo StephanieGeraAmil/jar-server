@@ -16,8 +16,6 @@ const JarsSection = () => {
                     })}
 
             </div>
-            
-            <JarMoneyTransfer originJar={jars[0]}/>
         </>
     )
 }

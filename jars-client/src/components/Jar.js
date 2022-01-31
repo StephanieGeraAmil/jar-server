@@ -2,12 +2,20 @@ import React from 'react'
 
 import {useDispatch} from 'react-redux';
 import { deleteJar} from '../actions/JarsActions.js'
-import { jarSelected} from '../actions/currentSelectionActions.js'
+import { jarSelected, settingFormPurposeToEditJar, settingFormPurposeToTransferMoneyToJar} from '../actions/currentSelectionActions.js'
 import { AvaiableOnJar } from './AvaiableOnJar.js';
 
 export const Jar = ({jar}) => {
     const dispatch= useDispatch();
    
+    const edit=()=>{
+        dispatch(jarSelected(jar));
+        dispatch(settingFormPurposeToEditJar());
+     }
+      const transfer=()=>{
+        dispatch(jarSelected(jar));
+        dispatch(settingFormPurposeToTransferMoneyToJar());
+     }
     
     return (
         <div className="jar">
@@ -26,7 +34,7 @@ export const Jar = ({jar}) => {
                 <div className="jar_actions_container">
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/edit.png")`
-                                }} onClick={()=>{dispatch(jarSelected(jar));}}>
+                                }} onClick={()=>{edit();}}>
                                 </div>
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/delete.png")`
@@ -34,7 +42,7 @@ export const Jar = ({jar}) => {
                                 </div>
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/Transfer.png")`
-                                }} onClick={()=>{}}>
+                                }} onClick={()=>{transfer();}}>
                                 </div>
                 </div>
 

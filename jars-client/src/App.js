@@ -15,8 +15,8 @@ const App = () =>{
   const dispatch= useDispatch();
   const selectorFormPurpose=
         (state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null);
-  const actionBeingPerformed = useSelector(selectorFormPurpose);
-  let formToBeDisplayed;
+ 
+  const formToBeDisplayed= useSelector(selectorFormPurpose);
   useEffect(()=>{
     dispatch(getMovements());
     dispatch(getJars());
@@ -26,23 +26,26 @@ const App = () =>{
   //dispatches an action
   return (
     <div className="App">
-      {(() => {
-        switch(formToBeDisplayed){
-          case 'Add Income':<MovementForm/>
-          case 'Add Expense':<MovementForm/>
-          case 'Edit':<MovementForm/>
-          case 'Add Jar':<JarForm/>
-          case 'TransferMoney':<JarMoneyTransfer/>
-          default : <></>
-      }
-      })()}
+   
       <Panel/>
-      {actionBeingPerformed&&<MovementForm/>}
       <MovementsHistorySection/>
       <JarsSection/>
-      <JarForm/>
+    
 
-      {}
+      {(() => {
+        console.log(formToBeDisplayed);
+            switch(formToBeDisplayed){
+              case 'Add Income': return <MovementForm/>
+              case 'Add Expense': return <MovementForm/>
+              case 'Edit Movement': return <MovementForm/>
+              case 'Add Jar': return <JarForm/>
+              case 'Transfer Money': return <JarMoneyTransfer/>
+              
+                
+              default : return null
+            }
+          })()
+      }
       
     </div>
   );

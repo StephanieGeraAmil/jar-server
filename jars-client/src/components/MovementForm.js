@@ -28,6 +28,9 @@ import { useDispatch , useSelector} from 'react-redux';
         (state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null);
     const actionBeingPerformed = useSelector(selectorFormPurpose);
        
+     useEffect(() => {  
+         console.log("in movement form")
+          }, []);
     useEffect(() => {  
         
         if (movementSelected!=null) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux';
 import { deleteMovement} from '../actions/MovementsActions.js'
-import { movementSelected, settingFormPurposeToEdit} from '../actions/currentSelectionActions.js'
+import { movementSelected, settingFormPurposeToEditMovement} from '../actions/currentSelectionActions.js'
 
  const Movement = ({movement}) => {
     const dispatch= useDispatch();
@@ -11,7 +11,7 @@ import { movementSelected, settingFormPurposeToEdit} from '../actions/currentSel
 
     const edit=()=>{
         dispatch(movementSelected(movement));
-        dispatch(settingFormPurposeToEdit());
+        dispatch(settingFormPurposeToEditMovement());
      }
 
     return (

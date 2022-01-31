@@ -1,26 +1,45 @@
-import React ,{useState} from 'react'
+import React ,{useEffect, useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import * as transferActions from '../actions/TransferActions.js'
-// import * as selectionActions from '../actions/currentSelectionActions.js'
+import * as selectionActions from '../actions/currentSelectionActions.js'
 
- const JarMoneyTransfer = ({originJar={name:'Give',_id:'111'}}) => {
-    const [destinationJar, setDestinationJar]=useState({});
-    const [amount, setAmount]=useState('');
+ const JarMoneyTransfer = () => {
+    
     const dispatch= useDispatch();
        
-    const selectorJarSelected=
+    const selectorGetJars=
         (state) =>(state.jars ? state.jars :null);
-    const jars = useSelector(selectorJarSelected);
+    const jars = useSelector(selectorGetJars);
+    const selectorOfSelectedJar=
+        (state) =>(state.currentSelection.jar ? state.currentSelection.jar :null);
+    const jarSelected = useSelector(selectorOfSelectedJar);
+
+    const [destinationJar, setDestinationJar]=useState(jars[0]);
+    const [amount, setAmount]=useState('');
   
     const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch(transferActions.createTransference({origin:originJar._id,destination:destinationJar._id,amount}));
+        dispatch(transferActions.createTransference({origin:jarSelected._id,destination:destinationJar._id,amount}));
         setDestinationJar({});
+        dispatch(selectionActions.clearMovementSelected());
+         dispatch(selectionActions.clearFormPurpose());
         };
 
     const handleDropdownChange=(e)=>{
-        setDestinationJar(jars.find(item=>item.name==e.target.value))
+            const optionClicked = e.target.value; 
+            setDestinationJar(jars.find(item=>item._id==optionClicked));  
+        };
+
+
+    const handleCancel=()=>{
+        dispatch(selectionActions.clearMovementSelected());
+        dispatch(selectionActions.clearFormPurpose());
+
     }
+    useEffect(()=>{
+          setDestinationJar(jars[0])
+  
+    },[])
 
   
     return (
@@ -31,7 +50,7 @@ import * as transferActions from '../actions/TransferActions.js'
                   <input  type="text"
                       required
                       className="form-control"
-                      value={originJar.name}
+                      value={jarSelected.name}
                       readOnly={true}
                       />
               </div>
@@ -40,7 +59,7 @@ import * as transferActions from '../actions/TransferActions.js'
 
               <div className="form-group">
                   <label className="m-2">DestinationJar: </label>
-                  <select  className="form-control  dropdown-control" value={destinationJar._id}   onChange={(e)=>handleDropdownChange(e)}>
+                  <select  className="form-control  dropdown-control" value={destinationJar}   onChange={(e)=>handleDropdownChange(e)}>
                         {jars.map(item=><option  key={item._id}>{item.name}</option>)}
                     </select>
               </div>
@@ -58,7 +77,7 @@ import * as transferActions from '../actions/TransferActions.js'
 
               <div className="bottom mt-5">
                 <input type="submit" value="Transfer" className="submitButton" />
-                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ }}/>
+                <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ handleCancel() }}/>
               </div>            
           </form>
         </div>
