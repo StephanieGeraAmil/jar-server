@@ -16,7 +16,7 @@ export const Jar = ({jar}) => {
                 <h5 className="percentace_jar">%{jar.percentage}</h5>
             </div>
             <div  className="jar_img div_img" style={{
-                    backgroundImage: `url("/imgs/jar3.png")`
+                    backgroundImage: `url("/imgs/jarMediumcoins.png")`
                     
                     }}>
             </div>
@@ -31,6 +31,10 @@ export const Jar = ({jar}) => {
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/delete.png")`
                                 }} onClick={()=>{dispatch(deleteJar(jar._id));}}>
+                                </div>
+                    <div  className="jar_actions div_img" style={{
+                                backgroundImage: `url("/imgs/Transfer.png")`
+                                }} onClick={()=>{}}>
                                 </div>
                 </div>
 

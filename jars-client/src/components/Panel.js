@@ -3,7 +3,7 @@ import Balance from './Balance';
 import { useDispatch } from 'react-redux';
 import * as actions from '../actions/currentSelectionActions.js'
 
-const MidSection = () => {
+const Panel = () => {
     const dispatch= useDispatch();
 
     const addingIncome=()=>{
@@ -20,22 +20,22 @@ const MidSection = () => {
             <div className='wallet_section'>
                 <div className="wallet" onClick={()=>{addingIncome();}}>
                     <div  className="direction div_img" style={{
-                    backgroundImage: `url("/imgs/in.png")`
+                    backgroundImage: `url("/imgs/inarrow.png")`
                     }} >
                     </div>
                     <div  className="picture div_img" style={{
-                    backgroundImage: `url("/imgs/wallet.png")`
+                    backgroundImage: `url("/imgs/WalletBlue.png")`
                     }}>
                     </div>
                 </div>
             
                 <div className="wallet" onClick={()=>{addingExpense();}}>
                         <div  className="direction div_img" style={{
-                        backgroundImage: `url("/imgs/out.png")`
+                        backgroundImage: `url("/imgs/outarrow.png")`
                         }}>
                         </div>
                         <div  className="picture div_img" style={{
-                        backgroundImage: `url("/imgs/wallet.png")`
+                        backgroundImage: `url("/imgs/WalletBlue.png")`
                         }}>
                         </div>
                 </div>
@@ -43,4 +43,4 @@ const MidSection = () => {
         </div>
     )
 }
-export default MidSection;
+export default Panel;

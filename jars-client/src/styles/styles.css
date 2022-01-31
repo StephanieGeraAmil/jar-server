@@ -218,8 +218,7 @@
 }
 
 .jar .bottom_of_jar .jar_actions_container {
-  width: 6vw;
-  height: 3.5vw;
+  height: 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -234,7 +233,7 @@
 
 .jar .bottom_of_jar .jar_actions_container .jar_actions {
   margin: 0 0.8vw;
-  width: 3vw;
+  width: 2.6vw;
 }
 
 .link {
@@ -307,7 +306,7 @@
 .form form .form-group .form-control {
   border-radius: 20vw;
   border-color: #073b4c;
-  border-width: 0.1vw;
+  border-width: 0.05vw;
   width: 60%;
 }
 

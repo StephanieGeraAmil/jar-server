@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Jar } from './Jar'
 import { useSelector } from 'react-redux';
 import JarMoneyTransfer from './JarMoneyTransfer.js';
 
 const JarsSection = () => {
-     const jars=useSelector(state=> state.jars); 
-    
-    useEffect(()=>{
-        console.log(jars)
-        console.log(jars[0])
-    },[jars])
-
+    const jars=useSelector(state=> state.jars); 
+  
     return (
         <>
             <div className="jarGrid">
