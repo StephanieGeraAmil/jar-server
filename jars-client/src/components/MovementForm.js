@@ -5,13 +5,7 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
 import { useDispatch , useSelector} from 'react-redux';
 
  const MovementForm = () => {
-     const [movementData, setMovementData]=useState({
-         amount:'',
-         concept:'',
-         jar:[],
-         id:''
-
-     })
+   
  
     const dispatch= useDispatch();
      
@@ -28,14 +22,23 @@ import { useDispatch , useSelector} from 'react-redux';
         (state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null);
     const actionBeingPerformed = useSelector(selectorFormPurpose);
        
+      const [movementData, setMovementData]=useState({
+         amount:'',
+         concept:'',
+         jar:[],
+         id:''
+
+     })
      useEffect(() => {  
-         console.log("in movement form")
+         
+        
           }, []);
+
     useEffect(() => {  
         
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
-          
+           
         }else{
             setMovementData({...movementData, id:"",concept:"", amount:'', jar:[]});
 
@@ -59,16 +62,16 @@ import { useDispatch , useSelector} from 'react-redux';
         
     };
     const handleCheck = (e) => {
-    let updatedList = [...movementData.jar];
-  
-    if (e.target.checked) {
-      updatedList = [...movementData.jar, jars.find(item=>item._id==e.target.value)];
-    } else {
-      updatedList.splice(movementData.jar.filter(item=>item._id!=e.target.value), 1);
-    }
-    setMovementData({...movementData, jar:updatedList})
-  };
- 
+        let updatedList = [...movementData.jar];
+    
+        if (e.target.checked) {
+        updatedList = [...movementData.jar, jars.find(item=>item._id==e.target.value)];
+        } else {
+        updatedList.splice(movementData.jar.filter(item=>item._id!=e.target.value), 1);
+        }
+        setMovementData({...movementData, jar:updatedList})
+    };
+    
   
     return (
         <div className="form">
@@ -96,7 +99,7 @@ import { useDispatch , useSelector} from 'react-redux';
                 
                     <div className="checkbox_list"> 
                      {jars.map( item => <div  key={item._id} className="checkbox_item" >
-                                    <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.indexOf(item)!=-1 ?true:false}/> 
+                                    <input value={item._id} type="checkbox"  onChange={(e)=>handleCheck(e)} checked={movementData.jar.map(jarInMovementData=>jarInMovementData._id).indexOf(item._id)!=-1 ?true:false} /> 
                                     <span>{item.name} </span>
                              </div>)}
                     </div>
