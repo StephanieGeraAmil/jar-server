@@ -3,13 +3,7 @@
   margin: auto;
   form {
     width: 100%;
-
-    // border-radius: 5vw;
-    // border-color: $accent-color;
     margin-bottom: 2vw;
-    // padding: 2vw;
-    // border-style: solid;
-    // border-width: 0.4vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -20,29 +14,40 @@
       flex-direction: row;
       justify-content: space-between;
       margin-bottom: 2vw;
+      font-weight: normal;
+      font-size: 3vw;
       .form-control {
         border-radius: $boxRadius;
         border-color: $base-color;
-        border-width: 0.05vw;
-        width: 60%;
+        border-width: 0.001vw;
+        width: 50%;
+        font-weight: normal;
+        color: $base-color;
+        padding-left: 1.5vw;
+
+        .dropdown-control {
+          width: 50%;
+        }
       }
 
       .jars_list {
         display: flex;
         flex-direction: row;
         height: 10vw;
+        font-weight: normal;
       }
 
       .checkbox_list {
         padding: 1vw;
         width: 80%;
-
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 0;
 
         .checkbox_item {
-          font-size: 3vw;
+          font-size: 2.5vw;
+          font-weight: normal;
           padding: 0 1vw;
         }
       }
@@ -67,6 +72,7 @@
       }
       .cancel {
         font-size: 3vw;
+        font-weight: normal;
         width: 11vw;
       }
     }

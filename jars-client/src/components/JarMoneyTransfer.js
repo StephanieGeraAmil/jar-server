@@ -40,7 +40,7 @@ import * as transferActions from '../actions/TransferActions.js'
 
               <div className="form-group">
                   <label className="m-2">DestinationJar: </label>
-                  <select  className="form-control dropdown" value={destinationJar._id}   onChange={(e)=>handleDropdownChange(e)}>
+                  <select  className="form-control  dropdown-control" value={destinationJar._id}   onChange={(e)=>handleDropdownChange(e)}>
                         {jars.map(item=><option  key={item._id}>{item.name}</option>)}
                     </select>
               </div>

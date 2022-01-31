@@ -52,7 +52,7 @@ import {clearJarSelected} from '../actions/currentSelectionActions.js'
                       required
                       className="form-control"
                       value={jarData.name}
-                      onChange={(e)=>setJarData({...jarData, name:e.target.value})}
+                      onChange={(e)=>setJarData({...jarData, name:(e.target.value).toUpperCase()})}
                       />
               </div>
               <div className="form-group">

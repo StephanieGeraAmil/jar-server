@@ -76,7 +76,7 @@ import { useDispatch , useSelector} from 'react-redux';
                       required
                       className="form-control"
                       value={movementData.concept}
-                      onChange={(e)=>setMovementData({...movementData, concept:e.target.value})}
+                      onChange={(e)=>setMovementData({...movementData, concept:(e.target.value).toUpperCase()})}
                       />
               </div>
               <div className="form-group">

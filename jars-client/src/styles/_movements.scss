@@ -9,16 +9,19 @@
   border-radius: $boxRadius;
   background-color: $accent-color;
   margin-bottom: 2vw;
+
   .movement_column {
     width: 18%;
     font-size: 4vw;
     padding: 2vw;
+    font-weight: 100;
   }
   .movement_actions_container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
     .movement_actions {
       width: 3vw;
       height: 3vw;
@@ -30,5 +33,6 @@
     margin: 0;
     padding: 2vw;
     display: flexbox;
+    font-weight: 100;
   }
 }
