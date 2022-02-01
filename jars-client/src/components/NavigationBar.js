@@ -4,7 +4,7 @@ import { settingFormPurposeToDistributePercentagesOfJars,clearFormPurpose } from
 import { Link } from "react-router-dom";
 
 export const NavigationBar = () => {
-     const dispatch= useDispatch();
+    //  const dispatch= useDispatch();
     return (
         <div className='navigation_bar'>
 
