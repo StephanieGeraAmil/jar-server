@@ -6,8 +6,11 @@ export const AvaiableOnJar = ({jar}) => {
     const movements=useSelector((state)=>state.movements);
     const transferences=useSelector((state)=>state.transactions);
     const [amount, setAmount]=useState(0)
-    
 
+    
+  
+
+    
     useEffect ( () => {
     let balance=0;
                        
@@ -57,11 +60,49 @@ export const AvaiableOnJar = ({jar}) => {
 
             });
     setAmount(balance);
-    }
+  
+        }
     , [movements,transferences]);
 
+   
     return (
         <>
+
+         {(() =>{ 
+            let fullnes = 'Empty';
+
+            if(amount<0){
+              fullnes= 'Debt';
+              }else if(amount==0){
+                
+                fullnes= 'Empty';
+               }else if(amount<1000 && amount>0){
+                     fullnes='Medium';
+                    }else if(amount>=1000){
+                        fullnes='Full';
+                    };  
+             
+            switch(fullnes){
+              case ('Debt'): return  ( <div  className="jar_img div_img" style={{
+                                                backgroundImage: `url("/imgs/jar0coins.png")`
+                                                }}>
+                                        </div>)
+              case ('Empty'): return  (<div  className="jar_img div_img" style={{
+                                                backgroundImage: `url("/imgs/jar0coins.png")`
+                                                }}>
+                                        </div>)
+              case ('Medium'): return ( <div  className="jar_img div_img" style={{
+                                                            backgroundImage: `url("/imgs/jarMediumCoins.png")`
+                                                            }}>
+                                                        </div>)
+              case ("Full"): return (<div  className="jar_img div_img" style={{
+                                                backgroundImage: `url("/imgs/jarManycoins.png")`
+                                                }}>
+                                        </div>   ) 
+             
+            }
+          })()
+      }
              <h4 className="balance_jar">${amount}</h4>
         </>
     )

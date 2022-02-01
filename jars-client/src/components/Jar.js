@@ -26,11 +26,13 @@ export const Jar = ({jar,section}) => {
                 <h4 className="name_jar">{jar.name}</h4>
                 <h5 className="percentace_jar">%{jar.percentage}</h5>
             </div>
-            <div  className="jar_img div_img" style={{
+
+            
+            {/* <div  className="jar_img div_img" style={{
                     backgroundImage: `url("/imgs/jarMediumcoins.png")`
                     
                     }}>
-            </div>
+            </div> */}
            
             <div className="bottom_of_jar">
                  <AvaiableOnJar jar={jar}/>
