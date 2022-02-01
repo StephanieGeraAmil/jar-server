@@ -272,6 +272,13 @@
   margin-top: 10vw;
 }
 
+.form .validation_message {
+  color: red;
+  font-size: 3vw;
+  font-weight: normal;
+  text-align: center;
+}
+
 .form form {
   width: 100%;
   margin-bottom: 2vw;

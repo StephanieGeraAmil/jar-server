@@ -8,6 +8,7 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
 
  const JarDistribution = () => {
     const [updatedJars, setUpdatedJars]=useState([])
+        const [validationMessage, setValidationMessage]=useState('')
 
     const dispatch= useDispatch();
     const selectorJarSelected=
@@ -23,16 +24,24 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        updatedJars.map(jar=>
+        let reducer=(acc,item)=>acc+parseFloat(item.percentage);
+    
+        if(updatedJars.reduce(reducer,0)!=100){
+          
+        }else{
+            
+            setValidationMessage('');
+            updatedJars.map(jar=>
             dispatch(updateJar(jar))); 
+        }
          
-       };
+    };
 
-       const handleChange=(e,jar)=>{
+    const handleChange=(e,jar)=>{
            const newJar={...jar,percentage:e.target.value };
            setUpdatedJars(updatedJars.map(item=>item._id==jar._id?newJar:item))
-        //    
-       }
+       
+    }
 
   
     return (
@@ -40,6 +49,7 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
         <JarForm/>
         <JarSection/>
         <div className="form">
+          <label className="m-2 validation_message">{validationMessage} </label>
           <form onSubmit={handleSubmit}>
               {updatedJars.map(jar=>{
                     return ( 
