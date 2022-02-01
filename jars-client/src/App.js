@@ -33,7 +33,7 @@ const App = () =>{
    
       <Panel/>
       <MovementsHistorySection/>
-      <JarsSection/>
+      <JarsSection section="dashboard"/>
     
 
       {(() => {

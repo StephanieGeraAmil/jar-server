@@ -11,9 +11,8 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
         const [validationMessage, setValidationMessage]=useState('')
 
     const dispatch= useDispatch();
-    const selectorJarSelected=
-        (state) =>(state.jars ? state.jars :null);
-    const jars = useSelector(selectorJarSelected);
+   
+    const jars = useSelector((state) =>(state.jars ? state.jars :null));
 
     useEffect(()=>{
          setUpdatedJars(jars);
@@ -25,9 +24,9 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
     const handleSubmit=(e)=>{
         e.preventDefault();
         let reducer=(acc,item)=>acc+parseFloat(item.percentage);
-    
+        
         if(updatedJars.reduce(reducer,0)!=100){
-          
+            setValidationMessage(" All the Percentages shoud Add up to 100%");
         }else{
             
             setValidationMessage('');
@@ -47,7 +46,7 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
     return (
         <div className="distribution_page">
         <JarForm/>
-        <JarSection/>
+        <JarSection section="distribution"/>
         <div className="form">
           <label className="m-2 validation_message">{validationMessage} </label>
           <form onSubmit={handleSubmit}>

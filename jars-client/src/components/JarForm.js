@@ -2,6 +2,7 @@ import React ,{useState, useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createJar,updateJar} from '../actions/JarsActions.js'
 import {clearJarSelected,clearFormPurpose} from '../actions/currentSelectionActions.js'
+import JarsSection from './JarsSection.js';
 
  const JarForm = () => {
      const [jarData, setJarData]=useState({
@@ -10,11 +11,12 @@ import {clearJarSelected,clearFormPurpose} from '../actions/currentSelectionActi
          name:''
 
      })
+    const [validationMessage, setValidationMessage]=useState('')
     const dispatch= useDispatch();
    
 
 
-   
+    const jars = useSelector((state) =>(state.jars ? state.jars :null));
     const selectorOfSelectedJar=
         (state) =>(state.currentSelection.jar ? state.currentSelection.jar :null);
     const jarSelected = useSelector(selectorOfSelectedJar);
@@ -32,22 +34,29 @@ import {clearJarSelected,clearFormPurpose} from '../actions/currentSelectionActi
     const handleSubmit=(e)=>{
         e.preventDefault();
 
-        if (jarSelected) {
-            dispatch(updateJar({_id:jarSelected._id,...jarData}));
-            dispatch(clearJarSelected());
-            
+        if(jars.find(jar=>jar.name==jarData.name)!=null){
+            setValidationMessage("There already is a Jar  with that name, please choose another one");
+
         }else{
-             dispatch(createJar(jarData));
-             setJarData({...jarData, percentage:"", name:""});
-             
+            setValidationMessage('');
+            if (jarSelected) {
+                dispatch(updateJar({_id:jarSelected._id,...jarData}));
+                dispatch(clearJarSelected());
+                
+            }else{
+                dispatch(createJar(jarData));
+                setJarData({...jarData, percentage:"", name:""});
+                
+            }
+            dispatch(clearFormPurpose());
         }
-        dispatch(clearFormPurpose());
        
-        };
+    };
 
   
     return (
         <div className="form">
+          <label className="m-2 validation_message">{validationMessage} </label>
           <form onSubmit={handleSubmit}>
               <div className="form-group"> 
                   <label className="m-2">Name: </label>

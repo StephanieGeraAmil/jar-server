@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 import {useDispatch} from 'react-redux';
 import { deleteJar} from '../actions/JarsActions.js'
 import { jarSelected, settingFormPurposeToEditJar, settingFormPurposeToTransferMoneyToJar} from '../actions/currentSelectionActions.js'
 import { AvaiableOnJar } from './AvaiableOnJar.js';
 
-export const Jar = ({jar}) => {
+export const Jar = ({jar,section}) => {
     const dispatch= useDispatch();
    
     const edit=()=>{
@@ -16,7 +16,10 @@ export const Jar = ({jar}) => {
         dispatch(jarSelected(jar));
         dispatch(settingFormPurposeToTransferMoneyToJar());
      }
-    
+    //  useEffect(()=>{
+     
+    //       console.log(section);
+    // },[])
     return (
         <div className="jar">
             <div className="top_of_jar">
@@ -32,18 +35,22 @@ export const Jar = ({jar}) => {
             <div className="bottom_of_jar">
                  <AvaiableOnJar jar={jar}/>
                 <div className="jar_actions_container">
-                    {/* <div  className="jar_actions div_img" style={{
-                                backgroundImage: `url("/imgs/edit.png")`
-                                }} onClick={()=>{edit();}}>
-                                </div>
-                    <div  className="jar_actions div_img" style={{
-                                backgroundImage: `url("/imgs/delete.png")`
-                                }} onClick={()=>{dispatch(deleteJar(jar._id));}}>
-                                </div> */}
-                    <div  className="jar_actions div_img" style={{
+                    {(section=='distribution') ? <> <div  className="jar_actions div_img" style={{
+                                                    backgroundImage: `url("/imgs/edit.png")`
+                                                    }} onClick={()=>{edit();}}>
+                                                    </div>
+                                                    <div  className="jar_actions div_img" style={{
+                                                    backgroundImage: `url("/imgs/delete.png")`
+                                                    }} onClick={()=>{dispatch(deleteJar(jar._id));}}>
+                                                    </div>
+                                                </> 
+                                :
+                                
+                                <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/Transfer.png")`
                                 }} onClick={()=>{transfer();}}>
-                                </div>
+                                </div>}
+                    
                 </div>
 
             </div>
