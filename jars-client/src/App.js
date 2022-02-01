@@ -9,6 +9,7 @@ import {getJars} from './actions/JarsActions.js'
 import MovementForm from './components/MovementForm';
 import JarForm from './components/JarForm';
 import JarMoneyTransfer from './components/JarMoneyTransfer';
+import { NavigationBar } from './components/NavigationBar';
 
 
 const App = () =>{
@@ -46,6 +47,7 @@ const App = () =>{
             }
           })()
       }
+      <NavigationBar/>
       
     </div>
   );

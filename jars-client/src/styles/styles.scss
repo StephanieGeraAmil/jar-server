@@ -9,22 +9,19 @@
 @import "./wallet";
 @import "./form";
 
-// @font-face {
-//   font-family: "luckiest_guyregular";
-//   src: local("luckiest_guyregular"),
-//     url(../assets/webfontkit-20210913-070136/luckiestguy-regular-webfont.woff)
-//       format("woff");
-// }
-
 @mixin light-theme {
   background-color: $background-color;
   color: $base-color;
+}
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .App {
   @include light-theme();
   width: 100%;
-  margin: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,9 +29,24 @@
   font-size: calc(10px + 2vmin);
   font-family: $font;
   font-weight: 900;
+
   .div_img {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+  }
+  .navigation_bar {
+    background-color: #073b4c;
+    height: 12vw;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .nav_icon {
+      width: 6vw;
+      height: 6vw;
+    }
   }
 }
