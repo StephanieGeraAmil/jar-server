@@ -13,6 +13,7 @@ import { NavigationBar } from './components/NavigationBar';
 import { getTransferences } from './actions/TransferActions';
 
 
+
 const App = () =>{
   const dispatch= useDispatch();
   const selectorFormPurpose=
@@ -36,15 +37,15 @@ const App = () =>{
     
 
       {(() => {
-        console.log(formToBeDisplayed);
+       
             switch(formToBeDisplayed){
               case 'Add Income': return <MovementForm/>
               case 'Add Expense': return <MovementForm/>
               case 'Edit Movement': return <MovementForm/>
-               case 'Edit Jar': return <JarForm/>
-              case 'Add Jar': return <JarForm/>
+              //  case 'Edit Jar': return <JarForm/>
+              // case 'Add Jar': return <JarForm/>
               case 'Transfer Money': return <JarMoneyTransfer/>
-              case 'Distribute Percentage': return <JarForm/>
+              // case 'Distribute Percentage': return <JarForm/>
                 
               default : return null
             }

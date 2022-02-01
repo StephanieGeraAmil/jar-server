@@ -1,6 +1,9 @@
-import React ,{useState} from 'react'
+import React ,{useEffect, useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {updateJar} from '../actions/JarsActions.js'
+import JarForm from './JarForm.js';
+import JarSection from './JarsSection.js'
+import { NavigationBar } from './NavigationBar.js';
 import * as selectionActions from '../actions/currentSelectionActions.js'
 
  const JarDistribution = () => {
@@ -10,15 +13,19 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
     const selectorJarSelected=
         (state) =>(state.jars ? state.jars :null);
     const jars = useSelector(selectorJarSelected);
-    setUpdatedJars(jars);
+
+    useEffect(()=>{
+         setUpdatedJars(jars);
+   
+    },[jars])
+   
    
 
     const handleSubmit=(e)=>{
         e.preventDefault();
         updatedJars.map(jar=>
-            dispatch(updateJar(jar)));
-        
-        setUpdatedJars([]);
+            dispatch(updateJar(jar))); 
+         
        };
 
     const handleUpdate=(e)=>{
@@ -27,9 +34,13 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
 
   
     return (
+        <div className="distribution_page">
+        <JarForm/>
+        <JarSection/>
         <div className="form">
           <form onSubmit={handleSubmit}>
-              {updatedJars.map(jar=>{
+              {jars.map(jar=>{
+               return ( 
               <div className="form-group"> 
                   <label className="m-2">{jar.name} </label>
                   <input  type="text"
@@ -39,16 +50,17 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
                       onChange={(e)=>handleUpdate(e)}
                       />
               </div>
-              })}
+              )}
+              )
+            }
               
-              
-            
-
               <div className="bottom mt-5">
                 <input type="submit" value="Save" className="submitButton" />
                  <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ }}/>
               </div>            
           </form>
+        </div>
+        <NavigationBar/>
         </div>
     )
 }

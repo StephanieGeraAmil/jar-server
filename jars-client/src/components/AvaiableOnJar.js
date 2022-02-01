@@ -42,9 +42,9 @@ export const AvaiableOnJar = ({jar}) => {
               
         }
        );
-       console.log(transferences)
+     
         transferences.map(item=>{
-                console.log('intransferenceMap')
+                
                  if(item.origin==jar._id){
                     balance-=item.amount;
                     
@@ -52,7 +52,7 @@ export const AvaiableOnJar = ({jar}) => {
                  if(item.destination==jar._id){
                       balance+=item.amount;
                  }
-                 console.log(balance)
+                
                      
 
             });

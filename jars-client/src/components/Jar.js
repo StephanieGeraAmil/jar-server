@@ -32,14 +32,14 @@ export const Jar = ({jar}) => {
             <div className="bottom_of_jar">
                  <AvaiableOnJar jar={jar}/>
                 <div className="jar_actions_container">
-                    <div  className="jar_actions div_img" style={{
+                    {/* <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/edit.png")`
                                 }} onClick={()=>{edit();}}>
                                 </div>
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/delete.png")`
                                 }} onClick={()=>{dispatch(deleteJar(jar._id));}}>
-                                </div>
+                                </div> */}
                     <div  className="jar_actions div_img" style={{
                                 backgroundImage: `url("/imgs/Transfer.png")`
                                 }} onClick={()=>{transfer();}}>

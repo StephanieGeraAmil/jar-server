@@ -139,6 +139,7 @@
 
 .jarGrid {
   width: 85%;
+  margin: auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -151,7 +152,6 @@
           align-items: center;
   margin-bottom: 8vw;
   margin-top: 6vw;
-  margin-bottom: 10vw;
 }
 
 .jar {
@@ -267,7 +267,7 @@
 }
 
 .form {
-  width: 60%;
+  width: 80%;
   margin: auto;
 }
 
@@ -383,37 +383,25 @@
 body {
   margin: 0;
   padding: 0;
-}
-
-.App {
   background-color: #ffff;
   color: #073b4c;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   font-size: calc(10px + 2vmin);
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
 }
 
-.App .div_img {
+body .root {
+  width: 100%;
+}
+
+body .div_img {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-.App .navigation_bar {
+body .navigation_bar {
   background-color: #073b4c;
   height: 12vw;
   width: 100%;
@@ -431,7 +419,7 @@ body {
           align-items: center;
 }
 
-.App .navigation_bar .nav_icon {
+body .navigation_bar .nav_icon {
   width: 6vw;
   height: 6vw;
 }

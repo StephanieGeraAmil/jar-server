@@ -5,7 +5,7 @@
 @import "./movement_history_section";
 @import "./jar_grid";
 @import "./jar";
-@import "./links";
+
 @import "./wallet";
 @import "./form";
 
@@ -16,20 +16,18 @@
 body {
   margin: 0;
   padding: 0;
-}
-
-.App {
   @include light-theme();
   width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
   font-size: calc(10px + 2vmin);
   font-family: $font;
   font-weight: 900;
-
+  .root {
+    width: 100%;
+  }
   .div_img {
     background-size: contain;
     background-repeat: no-repeat;
