@@ -1,5 +1,6 @@
 
 import TransactionsModel from "../models/TransactionsModel.js";
+import mongoose from 'mongoose';
 
 export const getTransactions = async (req,res) =>{
    try{ 
@@ -10,7 +11,7 @@ export const getTransactions = async (req,res) =>{
      res.status(404).json({message:error.message});
    }
 }
-export const createTransactions=async (req,res) =>{
+export const createTransactions= async (req,res) =>{
    const trans=req.body;
     const newTransaction= new TransactionsModel(trans);
     
@@ -18,17 +19,20 @@ export const createTransactions=async (req,res) =>{
         await newTransaction.save();
         res.status(201).json(newTransaction);
    }catch(error){
-  res.status(409).json({message:error.message});
+   res.status(409).json({message:error.message});
    }
 }
-export const deleteTransaction=async (req,res) =>{
+export const deleteTransaction= async (req,res) =>{
       
    const {id:_id}=req.params;
    
    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
-   
-     const transaction=await MovementModel.deleteOne({_id:_id});
-    res.status(204).json(transaction);
+   try{
+     const transaction= await TransactionsModel.deleteOne({_id:_id});
+     res.status(204).json(transaction);
+   }catch(error){
+   res.status(409).json({message:error.message});
+   }
         
 }
 

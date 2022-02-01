@@ -29,21 +29,21 @@ export const NavigationBar = () => {
                     </div>
                 </div>
             
-             <div onClick={()=>{}}>
+             {/* <div onClick={()=>{}}>
                    
                     <div  className=" nav_icon picture div_img" style={{
                     backgroundImage: `url("/imgs/trophy.png")`
                     }}>
                     </div>
-                </div>
+                </div> */}
             
-             <div onClick={()=>{}}>
+             {/* <div onClick={()=>{}}>
                    
                     <div  className=" nav_icon picture div_img" style={{
                     backgroundImage: `url("/imgs/user.png")`
                     }}>
                     </div>
-                </div>
+                </div> */}
              
             
         </div>

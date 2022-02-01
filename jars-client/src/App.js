@@ -10,6 +10,7 @@ import MovementForm from './components/MovementForm';
 import JarForm from './components/JarForm';
 import JarMoneyTransfer from './components/JarMoneyTransfer';
 import { NavigationBar } from './components/NavigationBar';
+import { getTransferences } from './actions/TransferActions';
 
 
 const App = () =>{
@@ -21,6 +22,7 @@ const App = () =>{
   useEffect(()=>{
     dispatch(getMovements());
     dispatch(getJars());
+     dispatch(getTransferences());
     },
    
     []);

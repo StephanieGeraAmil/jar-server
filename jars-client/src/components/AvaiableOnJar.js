@@ -4,6 +4,7 @@ import { useSelector} from 'react-redux';
 export const AvaiableOnJar = ({jar}) => {
 
     const movements=useSelector((state)=>state.movements);
+    const transferences=useSelector((state)=>state.transactions);
     const [amount, setAmount]=useState(0)
     
 
@@ -31,16 +32,33 @@ export const AvaiableOnJar = ({jar}) => {
                             
                             
                         }
-                        balance=newBalance;
+                         balance=newBalance;
+                     
                     }
                   
                 }
-            )
+            );
+           
+              
         }
        );
+       console.log(transferences)
+        transferences.map(item=>{
+                console.log('intransferenceMap')
+                 if(item.origin==jar._id){
+                    balance-=item.amount;
+                    
+                 }
+                 if(item.destination==jar._id){
+                      balance+=item.amount;
+                 }
+                 console.log(balance)
+                     
+
+            });
     setAmount(balance);
     }
-    , [movements]);
+    , [movements,transferences]);
 
     return (
         <>

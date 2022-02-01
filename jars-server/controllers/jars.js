@@ -26,9 +26,13 @@ export const updateJar=async (req,res) =>{
    const updated=req.body;
    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
    
+   
+  try{
     const updatedJar= await JarModel.findByIdAndUpdate(_id,updated,{new:true});
     res.status(204).json(updatedJar);
-        
+   }catch(error){
+   res.status(409).json({message:error.message});
+   }
 }
 
 export const deleteJar=async (req,res) =>{
@@ -36,8 +40,12 @@ export const deleteJar=async (req,res) =>{
  
    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
    
+   try{
     const deleteJar= await JarModel.deleteOne({ _id:_id });
     res.status(204).json(deleteJar);
+   }catch(error){
+      res.status(409).json({message:error.message});
+   }
         
 }
 

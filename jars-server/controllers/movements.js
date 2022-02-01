@@ -42,9 +42,12 @@ export const deleteMovements=async (req,res) =>{
    const {id:_id}=req.params;
    
    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"invalid id"});
-   
+   try {
      const movement=await MovementModel.deleteOne({_id:_id});
     res.status(204).json(movement);
+   }catch(error){
+         res.status(409).json({message:error.message});
+   }
         
 }
 
