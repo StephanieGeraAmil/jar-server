@@ -35,10 +35,13 @@ import {clearJarSelected,clearFormPurpose} from '../actions/currentSelectionActi
         if (jarSelected) {
             dispatch(updateJar({_id:jarSelected._id,...jarData}));
             dispatch(clearJarSelected());
+            
         }else{
              dispatch(createJar(jarData));
              setJarData({...jarData, percentage:"", name:""});
+             
         }
+        dispatch(clearFormPurpose());
        
         };
 
