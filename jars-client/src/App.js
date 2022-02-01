@@ -41,7 +41,7 @@ const App = () =>{
               case 'Edit Movement': return <MovementForm/>
               case 'Add Jar': return <JarForm/>
               case 'Transfer Money': return <JarMoneyTransfer/>
-              
+              case 'Distribute Percentage': return <JarForm/>
                 
               default : return null
             }
