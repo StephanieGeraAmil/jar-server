@@ -34,6 +34,10 @@ body {
     background-position: center center;
   }
   .navigation_bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
     background-color: #073b4c;
     height: 12vw;
     width: 100%;
