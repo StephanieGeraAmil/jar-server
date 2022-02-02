@@ -9,9 +9,8 @@ import { useDispatch , useSelector} from 'react-redux';
  
     const dispatch= useDispatch();
      
-    const selectorJarSelected=
-        (state) =>(state.jars ? state.jars :null);
-    const jars = useSelector(selectorJarSelected);
+   
+    const jars = useSelector(state=>state.jars ? state.jars :null);
 
    
     const selectorMovementSelected=
@@ -22,13 +21,16 @@ import { useDispatch , useSelector} from 'react-redux';
         (state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null);
     const actionBeingPerformed = useSelector(selectorFormPurpose);
        
-      const [movementData, setMovementData]=useState({
+    const [movementData, setMovementData]=useState({
          amount:'',
          concept:'',
          jar:[],
          id:''
 
      })
+    const [validationMessage, setValidationMessage]=useState('')
+
+
      useEffect(() => {  
          
         
@@ -48,17 +50,27 @@ import { useDispatch , useSelector} from 'react-redux';
     const handleSubmit=(e)=>{
 
         e.preventDefault();
-        if (movementSelected) {
-         
-            dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));      
-            dispatch(selectionActions.clearMovementSelected());
-            dispatch(selectionActions.clearFormPurpose());
-         
+
+         if(actionBeingPerformed=="Add Expense" && movementData.amount>0){
+            setValidationMessage("Expenses should be < 0");
+         }else if (actionBeingPerformed=="Add Income" && movementData.jar.length!=jars.length){
+            setValidationMessage("Incomes should be applied to all jars");
+        }else if (actionBeingPerformed=="Edit Movement" && movementData.amount>0 && movementData.jar.length!=jars.length){
+            setValidationMessage("Incomes should be applied to all jars");
+
         }else{
-            dispatch(movementActions.createMovement(movementData));      
-            setMovementData({...movementData,concept:"", amount:'', jar:[]});
-            dispatch(selectionActions.clearFormPurpose());
-        }
+                if (movementSelected) {
+                
+                    dispatch(movementActions.updateMovement({_id:movementSelected._id,...movementData}));      
+                    dispatch(selectionActions.clearMovementSelected());
+                    dispatch(selectionActions.clearFormPurpose());
+                
+                }else{
+                    dispatch(movementActions.createMovement(movementData));      
+                    setMovementData({...movementData,concept:"", amount:'', jar:[]});
+                    dispatch(selectionActions.clearFormPurpose());
+                }
+            }
         
     };
     const handleCheck = (e) => {
@@ -75,6 +87,7 @@ import { useDispatch , useSelector} from 'react-redux';
   
     return (
         <div className="form">
+          <label className="m-2 validation_message">{validationMessage} </label>
           <form onSubmit={handleSubmit}>
               <div className="form-group"> 
                   <label className="m-2">Concept: </label>

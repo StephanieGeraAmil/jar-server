@@ -20,6 +20,8 @@ export default (selected={movement: null, jar:null, formPurpose:null}, action)=>
         
         case  actions.SETTING_FORM_FOR_EXPENSE:
         return {...selected,formPurpose: "Add Expense"};
+         case  actions.SETTING_FORM_FOR_ADDING_JAR:
+        return {...selected,formPurpose: "Add Jar"};
         
         case  actions.SETTING_FORM_FOR_EDIT_MOVEMENT:
         return {...selected,formPurpose: "Edit Movement"};

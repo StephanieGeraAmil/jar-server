@@ -1,14 +1,14 @@
 import React ,{useEffect, useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {updateJar} from '../actions/JarsActions.js'
-import JarForm from './JarForm.js';
-import JarSection from './JarsSection.js'
-import { NavigationBar } from './NavigationBar.js';
-import * as selectionActions from '../actions/currentSelectionActions.js'
+import {clearFormPurpose} from '../actions/currentSelectionActions.js'
 
- const JarDistribution = () => {
+
+ 
+
+export const DistributionForm = () => {
     const [updatedJars, setUpdatedJars]=useState([])
-        const [validationMessage, setValidationMessage]=useState('')
+    const [validationMessage, setValidationMessage]=useState('')
 
     const dispatch= useDispatch();
    
@@ -30,8 +30,7 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
         }else{
             
             setValidationMessage('');
-            updatedJars.map(jar=>
-            dispatch(updateJar(jar))); 
+            updatedJars.map(jar=>dispatch(updateJar(jar))); 
         }
          
     };
@@ -41,13 +40,9 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
            setUpdatedJars(updatedJars.map(item=>item._id==jar._id?newJar:item))
        
     }
-
-  
     return (
-        <div className="distribution_page">
-        <JarForm/>
-        <JarSection section="distribution"/>
-        <div className="form">
+        <div>
+          <div className="form">
           <label className="m-2 validation_message">{validationMessage} </label>
           <form onSubmit={handleSubmit}>
               {updatedJars.map(jar=>{
@@ -66,12 +61,11 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
               
               <div className="bottom mt-5">
                 <input type="submit" value="Save" className="submitButton" />
-                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ }}/>
+                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{dispatch(clearFormPurpose()); }}/>
               </div>            
           </form>
         </div>
-        <NavigationBar/>
+            
         </div>
     )
 }
-export default JarDistribution;

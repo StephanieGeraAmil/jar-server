@@ -63,6 +63,17 @@ export const settingFormPurposeToExpense=()=>(dispatch)=>{
         console.log(error);
     }
 }
+export const settingFormPurposeToAddJar=()=>(dispatch)=>{
+    try {
+       
+        const action={type: actions.SETTING_FORM_FOR_ADDING_JAR};
+        
+        dispatch(action);
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
 export const settingFormPurposeToEditMovement=()=>(dispatch)=>{
     try {
        

@@ -42,10 +42,7 @@ const App = () =>{
               case 'Add Income': return <MovementForm/>
               case 'Add Expense': return <MovementForm/>
               case 'Edit Movement': return <MovementForm/>
-              //  case 'Edit Jar': return <JarForm/>
-              // case 'Add Jar': return <JarForm/>
               case 'Transfer Money': return <JarMoneyTransfer/>
-              // case 'Distribute Percentage': return <JarForm/>
                 
               default : return null
             }

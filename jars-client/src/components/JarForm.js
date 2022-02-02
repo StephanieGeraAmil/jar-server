@@ -1,8 +1,8 @@
 import React ,{useState, useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createJar,updateJar} from '../actions/JarsActions.js'
-import {clearJarSelected,clearFormPurpose} from '../actions/currentSelectionActions.js'
-import JarsSection from './JarsSection.js';
+import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercentagesOfJars} from '../actions/currentSelectionActions.js'
+
 
  const JarForm = () => {
      const [jarData, setJarData]=useState({
@@ -14,12 +14,8 @@ import JarsSection from './JarsSection.js';
     const [validationMessage, setValidationMessage]=useState('')
     const dispatch= useDispatch();
    
-
-
     const jars = useSelector((state) =>(state.jars ? state.jars :null));
-    const selectorOfSelectedJar=
-        (state) =>(state.currentSelection.jar ? state.currentSelection.jar :null);
-    const jarSelected = useSelector(selectorOfSelectedJar);
+    const jarSelected = useSelector((state) =>(state.currentSelection.jar ? state.currentSelection.jar :null));
        
     useEffect(() => {
        
@@ -34,7 +30,7 @@ import JarsSection from './JarsSection.js';
     const handleSubmit=(e)=>{
         e.preventDefault();
 
-        if(jars.find(jar=>jar.name==jarData.name)!=null){
+        if(jars.find(jar=>jar.name==jarData.name)!=null && jarSelected==null){
             setValidationMessage("There already is a Jar  with that name, please choose another one");
 
         }else{
@@ -46,6 +42,7 @@ import JarsSection from './JarsSection.js';
             }else{
                 dispatch(createJar(jarData));
                 setJarData({...jarData, percentage:"", name:""});
+                dispatch(settingFormPurposeToDistributePercentagesOfJars);
                 
             }
             dispatch(clearFormPurpose());
@@ -67,7 +64,7 @@ import JarsSection from './JarsSection.js';
                       onChange={(e)=>setJarData({...jarData, name:(e.target.value).toUpperCase()})}
                       />
               </div>
-              <div className="form-group">
+             { jarSelected==null && <div className="form-group">
                   <label className="m-2">Percentage: </label>
                   <input 
                       type="text" 
@@ -75,12 +72,12 @@ import JarsSection from './JarsSection.js';
                       value={jarData.percentage}
                       onChange={(e)=>setJarData({...jarData, percentage:e.target.value})}
                       />
-              </div>
+              </div>}
          
             
 
               <div className="bottom mt-5">
-                <input type="submit" value="Add Jar" className="submitButton" />
+                <input type="submit" value={ jarSelected==null? "Add Jar":"Edit"}className="submitButton" />
                                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(clearFormPurpose());}}/>
               </div>            
           </form>

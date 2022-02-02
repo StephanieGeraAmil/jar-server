@@ -1,12 +1,37 @@
-import React,{useEffect} from 'react'
+import React,{useState} from 'react'
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { deleteJar} from '../actions/JarsActions.js'
 import { jarSelected, settingFormPurposeToEditJar, settingFormPurposeToTransferMoneyToJar} from '../actions/currentSelectionActions.js'
 import { AvaiableOnJar } from './AvaiableOnJar.js';
 
+
 export const Jar = ({jar,section}) => {
     const dispatch= useDispatch();
+    const movements=useSelector((state)=>state.movements);  
+    const transferences=useSelector((state)=>state.transactions);
+    const [validationMessage, setValidationMessage]=useState('')
+
+    const handleDeleteJar=()=>{
+        console.log(transferences)
+        console.log(jar._id)
+        const arrayOfJarsUsedOnMovements=movements.map(item=>item.jar.find(element=>element._id==jar._id)?item.jar:null)
+        if(arrayOfJarsUsedOnMovements.find(element=>element!=null)==null){
+          //checking if there are movements asociated
+             if(transferences.find(item=>(item.origin==jar._id || item.destination==jar._id))==null){ 
+                 
+                dispatch(deleteJar(jar._id));
+             }else{
+                 setValidationMessage("You can't delete this Jar because there are transactions associated with this Jar");
+                
+                 
+            }
+        }else{
+            setValidationMessage("You can't delete this Jar because there are movements associated with this Jar");
+
+        }
+
+    }
    
     const edit=()=>{
         dispatch(jarSelected(jar));
@@ -16,10 +41,7 @@ export const Jar = ({jar,section}) => {
         dispatch(jarSelected(jar));
         dispatch(settingFormPurposeToTransferMoneyToJar());
      }
-    //  useEffect(()=>{
-     
-    //       console.log(section);
-    // },[])
+ 
     return (
         <div className="jar">
             <div className="top_of_jar">
@@ -27,12 +49,6 @@ export const Jar = ({jar,section}) => {
                 <h5 className="percentace_jar">%{jar.percentage}</h5>
             </div>
 
-            
-            {/* <div  className="jar_img div_img" style={{
-                    backgroundImage: `url("/imgs/jarMediumcoins.png")`
-                    
-                    }}>
-            </div> */}
            
             <div className="bottom_of_jar">
                  <AvaiableOnJar jar={jar}/>
@@ -43,13 +59,13 @@ export const Jar = ({jar,section}) => {
                                                     </div>
                                                     <div  className="jar_actions div_img" style={{
                                                     backgroundImage: `url("/imgs/delete.png")`
-                                                    }} onClick={()=>{dispatch(deleteJar(jar._id));}}>
+                                                    }} onClick={()=>{handleDeleteJar();}}>
                                                     </div>
                                                 </> 
                                 :
                                 
                                 <div  className="jar_actions div_img" style={{
-                                backgroundImage: `url("/imgs/Transfer.png")`
+                                backgroundImage: `url("/imgs/arrowsIcon.png")`
                                 }} onClick={()=>{transfer();}}>
                                 </div>}
                     

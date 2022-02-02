@@ -73,14 +73,20 @@ export const AvaiableOnJar = ({jar}) => {
 
             if(amount<0){
               fullnes= 'Debt';
-              }else if(amount==0){
-                
+            }else if(amount==0){
                 fullnes= 'Empty';
-               }else if(amount<1000 && amount>0){
-                     fullnes='Medium';
-                    }else if(amount>=1000){
-                        fullnes='Full';
-                    };  
+            }else if(amount<=100 && amount>0){
+                fullnes='SomeCoin';
+            }else if(amount<=1000 && amount>100){
+                fullnes='Medium';
+            }else if(amount>=1000 && amount<=10000 ){
+                fullnes='Full';
+            }else if(amount>=10000){
+                fullnes='Filled';
+            };  
+
+
+        
              
             switch(fullnes){
               case ('Debt'): return  ( <div  className="jar_img div_img" style={{
@@ -91,12 +97,20 @@ export const AvaiableOnJar = ({jar}) => {
                                                 backgroundImage: `url("/imgs/jar0coins.png")`
                                                 }}>
                                         </div>)
+              case ('SomeCoin'): return ( <div  className="jar_img div_img" style={{
+                                        backgroundImage: `url("/imgs/almostEmptyJar.png")`
+                                        }}>
+                                    </div>)
               case ('Medium'): return ( <div  className="jar_img div_img" style={{
                                                             backgroundImage: `url("/imgs/jarMediumCoins.png")`
                                                             }}>
                                                         </div>)
               case ("Full"): return (<div  className="jar_img div_img" style={{
                                                 backgroundImage: `url("/imgs/jarManycoins.png")`
+                                                }}>
+                                        </div>   ) 
+              case ("Filled"): return (<div  className="jar_img div_img" style={{
+                                                backgroundImage: `url("/imgs/filledJar.png")`
                                                 }}>
                                         </div>   ) 
              

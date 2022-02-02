@@ -21,6 +21,7 @@ export const DELETE_TRANSACTION= "transaction/delete_transaction";
 
 export const SETTING_FORM_FOR_INCOME="selected/setting_form_purpose_to_add_income";
 export const SETTING_FORM_FOR_EXPENSE="selected/setting_form_purpose_to_add_expense";
+export const SETTING_FORM_FOR_ADDING_JAR="selected/setting_form_purpose_to_add_jar";
 export const SETTING_FORM_FOR_EDIT_JAR="selected/setting_form_purpose_to_edit_jar";
 export const SETTING_FORM_FOR_EDIT_MOVEMENT="selected/setting_form_purpose_to_edit_movement";
 export const SETTING_FORM_FOR_TRANSER_MONEY="selected/setting_form_purpose_to_transfer_money";
