@@ -33,7 +33,7 @@ export const jarSelected=(currentSelection)=>(dispatch)=>{
 }
 export const clearJarSelected=()=>(dispatch)=>{
     try {
-       
+       console.log('clear the selected jar')
         const action={type: actions.UNSELECTED_JAR};
         dispatch(action);
         
@@ -65,7 +65,8 @@ export const settingFormPurposeToExpense=()=>(dispatch)=>{
 }
 export const settingFormPurposeToAddJar=()=>(dispatch)=>{
     try {
-       
+
+        
         const action={type: actions.SETTING_FORM_FOR_ADDING_JAR};
         
         dispatch(action);
@@ -87,7 +88,7 @@ export const settingFormPurposeToEditMovement=()=>(dispatch)=>{
 }
 export const settingFormPurposeToEditJar=()=>(dispatch)=>{
     try {
-       
+        console.log('dispatching the action of setting form purpose to edit jar')
         const action={type: actions.SETTING_FORM_FOR_EDIT_JAR};
     
         dispatch(action);
@@ -113,6 +114,7 @@ export const settingFormPurposeToTransferMoneyToJar=()=>(dispatch)=>{
 export const settingFormPurposeToDistributePercentagesOfJars=()=>(dispatch)=>{
     try {
        
+         console.log('dispatching the set form to distribute percentages')
         const action={type: actions.SETTING_FORM_FOR_DISTRIBUTE_PERCENTAGES};
     
         dispatch(action);
@@ -124,7 +126,7 @@ export const settingFormPurposeToDistributePercentagesOfJars=()=>(dispatch)=>{
 
 export const clearFormPurpose=()=>(dispatch)=>{
     try {
-       
+       console.log('dispatching the clear form purpose action')
         const action={type: actions.CLEAR_FORM_PURPOSE};
         dispatch(action);
         

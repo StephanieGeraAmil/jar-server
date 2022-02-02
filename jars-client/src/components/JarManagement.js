@@ -6,7 +6,7 @@ import JarSection from './JarsSection.js'
 import { NavigationBar } from './NavigationBar.js';
 
 import { DistributionForm } from './DistributionForm.js';
-import { settingFormPurposeToAddJar, settingFormPurposeToDistributePercentagesOfJars} from '../actions/currentSelectionActions.js'
+import { settingFormPurposeToAddJar, settingFormPurposeToDistributePercentagesOfJars, clearJarSelected} from '../actions/currentSelectionActions.js'
 
  const JarManagement = () => {
    const dispatch= useDispatch();
@@ -14,7 +14,15 @@ import { settingFormPurposeToAddJar, settingFormPurposeToDistributePercentagesOf
 
     const formToBeDisplayed= useSelector((state) =>(state.currentSelection.formPurpose ? state.currentSelection.formPurpose :null));
 
-
+    const handleAddJar=()=>{
+        dispatch(clearJarSelected());
+        dispatch(settingFormPurposeToAddJar());
+    }
+    const handleDistributePercentages=()=>{
+        dispatch(clearJarSelected());
+        dispatch(settingFormPurposeToDistributePercentagesOfJars());
+    }
+  
   
     return (
 
@@ -35,11 +43,11 @@ import { settingFormPurposeToAddJar, settingFormPurposeToDistributePercentagesOf
         <div className="management_actions">
             <div  className="action div_img" style={{
                   backgroundImage: `url("/imgs/addIcon.png")`
-                  }} onClick={()=>{ dispatch(settingFormPurposeToAddJar());}}>
+                  }} onClick={()=>{handleAddJar()}}>
                   </div>
               <div  className="action div_img" style={{
                   backgroundImage: `url("/imgs/percentageIcon.png")`
-                  }} onClick={()=>{dispatch(settingFormPurposeToDistributePercentagesOfJars());}}>
+                  }} onClick={()=>{handleDistributePercentages()}}>
             </div>
         </div>
         <NavigationBar/>

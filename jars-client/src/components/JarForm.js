@@ -33,22 +33,28 @@ import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercent
         if(jars.find(jar=>jar.name==jarData.name)!=null && jarSelected==null){
             setValidationMessage("There already is a Jar  with that name, please choose another one");
 
-        }else{
-            setValidationMessage('');
-            if (jarSelected) {
-                dispatch(updateJar({_id:jarSelected._id,...jarData}));
-                dispatch(clearJarSelected());
-                
-            }else{
-                dispatch(createJar(jarData));
-                setJarData({...jarData, percentage:"", name:""});
-                dispatch(settingFormPurposeToDistributePercentagesOfJars);
-                
-            }
+        }else{  setValidationMessage('');}
+      
+        if (jarSelected) {
+            dispatch(updateJar({_id:jarSelected._id,...jarData}));
+            dispatch(clearJarSelected());
             dispatch(clearFormPurpose());
+            
+        }else{
+            dispatch(createJar(jarData));
+            setJarData({...jarData, percentage:"", name:""});
+            dispatch(clearFormPurpose());
+            dispatch(settingFormPurposeToDistributePercentagesOfJars());
+            
         }
+        // 
+        
        
     };
+    const handleCancel=()=>{
+        dispatch(clearFormPurpose());
+        dispatch(clearJarSelected());
+    }
 
   
     return (
@@ -78,7 +84,7 @@ import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercent
 
               <div className="bottom mt-5">
                 <input type="submit" value={ jarSelected==null? "Add Jar":"Edit"}className="submitButton" />
-                                <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(clearFormPurpose());}}/>
+                                <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{handleCancel() }}/>
               </div>            
           </form>
         </div>

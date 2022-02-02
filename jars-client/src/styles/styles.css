@@ -268,9 +268,12 @@
 }
 
 .form {
-  width: 80%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   margin: auto;
-  margin-top: 10vw;
+  background-color: #e5e5e5;
 }
 
 .form .validation_message {
@@ -281,7 +284,9 @@
 }
 
 .form form {
-  width: 100%;
+  width: 80%;
+  margin: auto;
+  margin-top: 5vw;
   margin-bottom: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;

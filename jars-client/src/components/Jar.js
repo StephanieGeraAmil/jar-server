@@ -13,8 +13,7 @@ export const Jar = ({jar,section}) => {
     const [validationMessage, setValidationMessage]=useState('')
 
     const handleDeleteJar=()=>{
-        console.log(transferences)
-        console.log(jar._id)
+       
         const arrayOfJarsUsedOnMovements=movements.map(item=>item.jar.find(element=>element._id==jar._id)?item.jar:null)
         if(arrayOfJarsUsedOnMovements.find(element=>element!=null)==null){
           //checking if there are movements asociated

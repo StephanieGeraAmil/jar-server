@@ -32,6 +32,8 @@ export const DistributionForm = () => {
             setValidationMessage('');
             updatedJars.map(jar=>dispatch(updateJar(jar))); 
         }
+        dispatch(clearFormPurpose());
+
          
     };
 
@@ -61,7 +63,7 @@ export const DistributionForm = () => {
               
               <div className="bottom mt-5">
                 <input type="submit" value="Save" className="submitButton" />
-                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{dispatch(clearFormPurpose()); }}/>
+                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(clearFormPurpose());}}/>
               </div>            
           </form>
         </div>
