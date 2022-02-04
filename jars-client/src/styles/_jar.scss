@@ -52,3 +52,38 @@
     }
   }
 }
+
+@media (min-width: 500px) {
+  .jar {
+    height: 14vw;
+    width: 10vw;
+    .top_of_jar {
+      height: 4vw;
+      .name_jar {
+        font-size: 1.5vw;
+      }
+      .percentace_jar {
+        font-size: 1.5vw;
+      }
+    }
+    .jar_img {
+      height: 8vw;
+      width: 8vw;
+      margin: 0.5vw;
+    }
+    .bottom_of_jar {
+      .balance_jar {
+        height: 2vw;
+        font-size: 1.5vw;
+        text-align: center;
+      }
+      .jar_actions_container {
+        margin: 0.2vw;
+        height: 1.5vw;
+        .jar_actions {
+          width: 1.5vw;
+        }
+      }
+    }
+  }
+}

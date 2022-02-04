@@ -15,7 +15,7 @@ const Panel = () => {
         dispatch(actions.clearMovementSelected());
     }
     return (
-        <div className="horizontalSection">
+        <div className="panel">
             <Balance/>
             <div className='wallet_section'>
                 <div className="wallet" onClick={()=>{addingIncome();}}>

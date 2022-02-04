@@ -1,9 +1,10 @@
-.horizontalSection {
+.panel {
+  grid-column: 1;
+  grid-row: 1;
   width: $insideContainerSize;
   margin: auto;
   display: flex;
   flex-direction: row;
-  // align-items: center;
   justify-content: space-around;
   margin-bottom: $standardMargin * 1.5;
   margin-top: $standardMargin * 1.5;
@@ -14,5 +15,15 @@
     justify-content: space-around;
     align-items: center;
     padding-right: 5vw;
+  }
+}
+
+@media (min-width: 500px) {
+  .panel {
+    width: 100%;
+    grid-area: a;
+    .wallet_section {
+      width: 28%;
+    }
   }
 }

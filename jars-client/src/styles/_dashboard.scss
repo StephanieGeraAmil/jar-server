@@ -1,0 +1,47 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-columns: minmax(50%, auto);
+  justify-content: center;
+  align-items: center;
+
+  .management_actions {
+    grid-column: 1;
+    grid-row: 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: flex-start;
+    margin-bottom: 5vw;
+    margin-left: 10%;
+
+    .action {
+      width: 4vw;
+      height: 4vw;
+      margin-left: 3vw;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr;
+    grid-template-areas: "a b" "c b" "c b" "d b" "e b";
+    grid-auto-rows: auto;
+
+    .management_actions {
+      grid-area: d;
+      margin-right: 10%;
+      margin-top: 2vw;
+      .action {
+        width: 2.5vw;
+        height: 2.5vw;
+        margin-left: 2vw;
+      }
+    }
+  }
+}

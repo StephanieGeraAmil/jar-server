@@ -1,16 +1,21 @@
 import './styles/styles.css';
-import React, { useEffect, useState } from 'react';
-import Panel from './components/Panel';
-import JarsSection from './components/JarsSection';
-import MovementsHistorySection from './components/MovementsHistorySection';
+import React, { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
+
+
 import {getMovements} from './actions/MovementsActions.js'
 import {getJars} from './actions/JarsActions.js'
+import { getTransferences } from './actions/TransferActions';
+
+
+
+import {Dashboard} from './components/Dashboard';
 import MovementForm from './components/MovementForm';
-import JarForm from './components/JarForm';
 import JarMoneyTransfer from './components/JarMoneyTransfer';
 import { NavigationBar } from './components/NavigationBar';
-import { getTransferences } from './actions/TransferActions';
+import { DistributionForm } from './components/DistributionForm.js';
+import JarForm from './components/JarForm.js';
+
 
 
 
@@ -27,15 +32,13 @@ const App = () =>{
     },
    
     []);
-  //dispatches an action
+
+ 
+
   return (
     <div className="App">
-   
-      <Panel/>
-      <MovementsHistorySection/>
-      <JarsSection section="dashboard"/>
     
-
+      <Dashboard/>
       {(() => {
        
             switch(formToBeDisplayed){
@@ -43,12 +46,15 @@ const App = () =>{
               case 'Add Expense': return <MovementForm/>
               case 'Edit Movement': return <MovementForm/>
               case 'Transfer Money': return <JarMoneyTransfer/>
+              case 'Edit Jar': return <JarForm/>
+              case 'Add Jar': return <JarForm/>
+              case 'Distribute Percentage': return <DistributionForm/>
                 
               default : return null
             }
           })()
       }
-      <NavigationBar/>
+      {/* <NavigationBar/> */}
       
     </div>
   );

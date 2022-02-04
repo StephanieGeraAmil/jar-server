@@ -6,7 +6,7 @@ import { jarSelected, settingFormPurposeToEditJar, settingFormPurposeToTransferM
 import { AvaiableOnJar } from './AvaiableOnJar.js';
 
 
-export const Jar = ({jar,section}) => {
+export const Jar = ({jar}) => {
     const dispatch= useDispatch();
     const movements=useSelector((state)=>state.movements);  
     const transferences=useSelector((state)=>state.transactions);
@@ -52,21 +52,22 @@ export const Jar = ({jar,section}) => {
             <div className="bottom_of_jar">
                  <AvaiableOnJar jar={jar}/>
                 <div className="jar_actions_container">
-                    {(section=='distribution') ? <> <div  className="jar_actions div_img" style={{
-                                                    backgroundImage: `url("/imgs/edit.png")`
-                                                    }} onClick={()=>{edit();}}>
-                                                    </div>
-                                                    <div  className="jar_actions div_img" style={{
-                                                    backgroundImage: `url("/imgs/delete.png")`
-                                                    }} onClick={()=>{handleDeleteJar();}}>
-                                                    </div>
-                                                </> 
-                                :
+                    <> <div  className="jar_actions div_img" style={{
+                        backgroundImage: `url("/imgs/edit.png")`
+                        }} onClick={()=>{edit();}}>
+                        </div>
+                        
+                        <div  className="jar_actions div_img" style={{
+                        backgroundImage: `url("/imgs/delete.png")`
+                        }} onClick={()=>{handleDeleteJar();}}>
+                        </div>                 
                                 
-                                <div  className="jar_actions div_img" style={{
-                                backgroundImage: `url("/imgs/arrowsIcon.png")`
-                                }} onClick={()=>{transfer();}}>
-                                </div>}
+                                
+                        <div  className="jar_actions div_img" style={{
+                        backgroundImage: `url("/imgs/arrowsIcon.png")`
+                        }} onClick={()=>{transfer();}}>
+                        </div>
+                        </> 
                     
                 </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import JarManagement from './components/JarManagement';
+
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk'
@@ -24,7 +24,7 @@ ReactDOM.render(
          <Routes>
               <Route path="/" element={<App />} />
            
-              <Route path="distribution" element={<JarManagement />} />
+              {/* <Route path="distribution" element={<JarManagement />} /> */}
           </Routes>
       </Provider>
     </BrowserRouter>

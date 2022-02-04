@@ -1,4 +1,6 @@
 .jarGrid {
+  grid-column: 1;
+  grid-row: 3;
   width: $insideContainerSize;
   margin: auto;
   display: grid;
@@ -7,6 +9,13 @@
   grid-column-gap: 2vw;
   justify-items: center;
   align-items: center;
-  margin-bottom: $standardMargin * 2.5;
+  margin-bottom: $standardMargin * 4;
   margin-top: $standardMargin * 1.5;
+}
+
+@media (min-width: 500px) {
+  .jarGrid {
+    grid-area: c;
+    margin-top: 0;
+  }
 }

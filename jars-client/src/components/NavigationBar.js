@@ -8,55 +8,44 @@ export const NavigationBar = () => {
     return (
         <div className='navigation_bar'>
 
-                    <Link to="/">
+                    {/* <Link to="/"> */}
                         <div  className=" nav_icon picture div_img" style={{
                         backgroundImage: `url("/imgs/Dashboard.png")`
-                        }}>
+                        }} >
                         </div>
-                    </Link> 
-                    <Link to="/distribution">
-                        <div  className=" nav_icon picture div_img" style={{
+                    {/* </Link> 
+                    <Link to="/distribution"> */}
+                        {/* <div  className=" nav_icon picture div_img" style={{
                         backgroundImage: `url("/imgs/distribution.png")`
-                        }}>
-                        </div>
-                    </Link>
-             {/* <div onClick={()=>{ dispatch(clearFormPurpose());}}>
+                        }} >
+                        </div> */}
+                    {/* </Link> */}
+       
                  
-                    <div  className=" nav_icon picture div_img" style={{
-                    backgroundImage: `url("/imgs/Dashboard.png")`
-                    }}>
-                    </div>
-                </div>
-            <div onClick={()=>{dispatch(settingFormPurposeToDistributePercentagesOfJars());}}>
-                  
-                    <div  className=" nav_icon picture div_img" style={{
-                    backgroundImage: `url("/imgs/distribution.png")`
-                    }}>
-                    </div>
-                </div> */}
-             {/* <div onClick={()=>{}}>
+                
+            
                   
                     <div  className=" nav_icon picture div_img" style={{
                     backgroundImage: `url("/imgs/calendar.png")`
                     }}>
                     </div>
-                </div> */}
+{/*               
             
-             {/* <div onClick={()=>{}}>
+            
                    
                     <div  className=" nav_icon picture div_img" style={{
                     backgroundImage: `url("/imgs/trophy.png")`
                     }}>
                     </div>
-                </div> */}
+                
             
-             {/* <div onClick={()=>{}}>
+            
                    
                     <div  className=" nav_icon picture div_img" style={{
                     backgroundImage: `url("/imgs/user.png")`
                     }}>
-                    </div>
-                </div> */}
+                    </div> */}
+          
              
             
         </div>

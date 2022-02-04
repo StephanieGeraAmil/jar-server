@@ -36,3 +36,27 @@
     font-weight: 100;
   }
 }
+
+@media (min-width: 500px) {
+  .movement {
+    height: 3vw;
+    margin-bottom: 1.5vw;
+
+    .movement_column {
+      width: 15%;
+      font-size: 1.5vw;
+      padding: 1vw;
+    }
+    .movement_column_big {
+      width: 60%;
+      font-size: 1vw;
+      padding: 1vw;
+    }
+    .movement_actions_container {
+      .movement_actions {
+        width: 1.5vw;
+        height: 1.5vw;
+      }
+    }
+  }
+}

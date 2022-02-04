@@ -10,3 +10,12 @@
     list-style-type: none;
   }
 }
+
+@media (min-width: 500px) {
+  .movement_history {
+    width: 70%;
+    margin-top: 10vw;
+    align-self: start;
+    grid-area: b;
+  }
+}

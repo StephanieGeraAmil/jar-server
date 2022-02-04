@@ -3,7 +3,7 @@ import { Jar } from './Jar'
 import { useSelector } from 'react-redux';
 import JarMoneyTransfer from './JarMoneyTransfer.js';
 
-const JarsSection = ({section}) => {
+const JarsSection = () => {
     const jars=useSelector(state=> state.jars); 
 
    
@@ -14,7 +14,7 @@ const JarsSection = ({section}) => {
             <div className="jarGrid">
                 {jars.map((item) => {
                         return (
-                            <Jar key={item._id} jar={item} section={section}/>
+                            <Jar key={item._id} jar={item} />
                         )
                     })}
 
