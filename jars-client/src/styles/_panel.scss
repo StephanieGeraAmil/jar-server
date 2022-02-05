@@ -20,8 +20,10 @@
 
 @media (min-width: 500px) {
   .panel {
+    margin-top: 7vw;
     width: 100%;
     grid-area: a;
+    margin-bottom: 5vw;
     .wallet_section {
       width: 28%;
     }

@@ -17,5 +17,8 @@
   .jarGrid {
     grid-area: c;
     margin-top: 0;
+    grid-row-gap: 4vw;
+    grid-column-gap: 1vw;
+    margin-bottom: 5vw;
   }
 }
