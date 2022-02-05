@@ -519,18 +519,6 @@
   width: 50%;
 }
 
-.form form .form-group .jars_list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 10vw;
-  font-weight: normal;
-}
-
 .form form .form-group .checkbox_list {
   padding: 1vw;
   width: 80%;
@@ -579,6 +567,36 @@
   font-size: 3vw;
   font-weight: normal;
   width: 11vw;
+}
+
+@media (min-width: 500px) {
+  .form {
+    width: 70%;
+    left: 15%;
+    margin: auto;
+  }
+  .form .validation_message {
+    font-size: 1.5vw;
+  }
+  .form form .form-group {
+    font-size: 2vw;
+  }
+  .form form .form-group .form-control {
+    padding-left: 1vw;
+    font-size: 1.5vw;
+  }
+  .form form .form-group .checkbox_list .checkbox_item {
+    font-size: 1.5vw;
+  }
+  .form form .bottom {
+    height: 2.5vw;
+  }
+  .form form .bottom .submitButton {
+    font-size: 1.5vw;
+  }
+  .form form .bottom .cancel {
+    font-size: 1.5vw;
+  }
 }
 
 .navigation_bar {

@@ -44,12 +44,12 @@
         }
       }
 
-      .jars_list {
-        display: flex;
-        flex-direction: row;
-        height: 10vw;
-        font-weight: normal;
-      }
+      // .jars_list {
+      //   display: flex;
+      //   flex-direction: row;
+      //   height: 10vw;
+      //   font-weight: normal;
+      // }
 
       .checkbox_list {
         padding: 1vw;
@@ -88,6 +88,42 @@
         font-size: 3vw;
         font-weight: normal;
         width: 11vw;
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .form {
+    width: 70%;
+    left: 15%;
+    margin: auto;
+
+    .validation_message {
+      font-size: 1.5vw;
+    }
+    form {
+      .form-group {
+        font-size: 2vw;
+        .form-control {
+          padding-left: 1vw;
+          font-size: 1.5vw;
+        }
+        .checkbox_list {
+          .checkbox_item {
+            font-size: 1.5vw;
+          }
+        }
+      }
+
+      .bottom {
+        height: 2.5vw;
+        .submitButton {
+          font-size: 1.5vw;
+        }
+        .cancel {
+          font-size: 1.5vw;
+        }
       }
     }
   }

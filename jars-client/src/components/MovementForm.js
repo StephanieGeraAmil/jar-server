@@ -107,7 +107,7 @@ import { useDispatch , useSelector} from 'react-redux';
                       onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
                       />
               </div>
-              <div className="form-group jars_list">
+              <div className="form-group">
                   <label className="m-2">Jar: </label>
                 
                     <div className="checkbox_list"> 
