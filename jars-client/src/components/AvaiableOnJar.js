@@ -8,9 +8,6 @@ export const AvaiableOnJar = ({jar}) => {
     const [amount, setAmount]=useState(0)
 
     
-  
-
-    
     useEffect ( () => {
     let balance=0;
                        
@@ -25,18 +22,13 @@ export const AvaiableOnJar = ({jar}) => {
                         if(movement.amount<0){
                             //is expense
                             newBalance=balance+(movement.amount)/(movement.jar.length);
-                            
-                            
-                            
                         }else{
-
                             const percentageThatHad=movement.jar.find(item=>item._id==jar._id).percentage;   
                             newBalance=balance+(percentageThatHad/100)*movement.amount;
                             
-                            
                         }
                          balance=newBalance;
-                     
+
                     }
                   
                 }
