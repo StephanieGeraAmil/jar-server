@@ -15,6 +15,8 @@ import JarMoneyTransfer from './components/JarMoneyTransfer';
 import { NavigationBar } from './components/NavigationBar';
 import { DistributionForm } from './components/DistributionForm.js';
 import JarForm from './components/JarForm.js';
+import Modal from './components/Modal';
+import Backdrop from './components/Backdrop';
 
 
 
@@ -42,20 +44,20 @@ const App = () =>{
       {(() => {
        
             switch(formToBeDisplayed){
-              case 'Add Income': return <MovementForm/>
-              case 'Add Expense': return <MovementForm/>
-              case 'Edit Movement': return <MovementForm/>
-              case 'Transfer Money': return <JarMoneyTransfer/>
-              case 'Edit Jar': return <JarForm/>
-              case 'Add Jar': return <JarForm/>
-              case 'Distribute Percentage': return <DistributionForm/>
+              case 'Add Income': return ( <React.Fragment><Backdrop/><Modal form={<MovementForm/>}/></React.Fragment>)
+              case 'Add Expense': return ( <React.Fragment><Backdrop/><Modal form={<MovementForm/>}/></React.Fragment>)
+              case 'Edit Movement': return ( <React.Fragment><Backdrop/><Modal form={<MovementForm/>}/></React.Fragment>)
+              case 'Transfer Money': return( <React.Fragment><Backdrop/><Modal form={<JarMoneyTransfer/>}/></React.Fragment>)
+              case 'Edit Jar': return ( <React.Fragment><Backdrop/><Modal form={<JarForm/>}/></React.Fragment>)
+              case 'Add Jar': return ( <React.Fragment><Backdrop/><Modal form={<JarForm/>}/></React.Fragment>)
+              case 'Distribute Percentage': return ( <React.Fragment><Backdrop/><Modal form={<DistributionForm/>}/></React.Fragment>)
                 
               default : return null
             }
           })()
       }
       {/* <NavigationBar/> */}
-      
+    
     </div>
   );
 }

@@ -1,10 +1,10 @@
 .form {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: auto;
-  background-color: #e5e5e5;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  margin: 0;
+  // background-color: #e5e5e5;
   .validation_message {
     color: red;
     font-size: 2.5vw;
@@ -87,9 +87,9 @@
 
 @media (min-width: 500px) {
   .form {
-    width: 60%;
-    left: 20%;
-    margin: auto;
+    // width: 60%;
+    // left: 20%;
+    // margin: auto;
     .validation_message {
       margin-left: 10%;
       font-size: 1.5vw;
