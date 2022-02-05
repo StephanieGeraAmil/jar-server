@@ -26,13 +26,15 @@ export const DistributionForm = () => {
         let reducer=(acc,item)=>acc+parseFloat(item.percentage);
         
         if(updatedJars.reduce(reducer,0)!=100){
+           
             setValidationMessage(" All the Percentages shoud Add up to 100%");
         }else{
             
             setValidationMessage('');
             updatedJars.map(jar=>dispatch(updateJar(jar))); 
+            dispatch(clearFormPurpose());
         }
-        dispatch(clearFormPurpose());
+        
 
          
     };
