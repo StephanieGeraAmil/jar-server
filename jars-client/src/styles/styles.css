@@ -217,7 +217,7 @@
 
 @media (min-width: 500px) {
   .movement_history {
-    width: 70%;
+    width: 85%;
     margin-top: 7vw;
     -ms-flex-item-align: start;
         -ms-grid-row-align: start;
