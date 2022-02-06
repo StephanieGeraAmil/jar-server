@@ -76,8 +76,9 @@ import * as selectionActions from '../actions/currentSelectionActions.js'
             
 
               <div className="bottom mt-5">
+                <input className="submitButton cancel" readOnly value="x" onClick={()=>{ handleCancel() }}/>
                 <input type="submit" value="Transfer" className="submitButton" />
-                <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ handleCancel() }}/>
+            
               </div>            
           </form>
         </div>

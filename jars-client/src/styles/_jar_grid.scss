@@ -15,10 +15,11 @@
 
 @media (min-width: 500px) {
   .jarGrid {
+    width: 65%;
     grid-area: c;
     margin-top: 0;
-    grid-row-gap: 4vw;
+    margin-bottom: 0;
+    grid-row-gap: 2vw;
     grid-column-gap: 1vw;
-    margin-bottom: 5vw;
   }
 }

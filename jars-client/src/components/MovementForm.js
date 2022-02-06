@@ -31,18 +31,15 @@ import { useDispatch , useSelector} from 'react-redux';
     const [validationMessage, setValidationMessage]=useState('')
 
 
-     useEffect(() => {  
-         
-        
-          }, []);
-
     useEffect(() => {  
         
         if (movementSelected!=null) {
             setMovementData({concept:movementSelected.concept, amount: movementSelected.amount, jar:movementSelected.jar});
            
         }else{
+            
             setMovementData({...movementData, id:"",concept:"", amount:'', jar:[]});
+            if(actionBeingPerformed=="Add Income"){setMovementData({...movementData, jar:jars});}
 
         }
     }, [movementSelected]);
@@ -51,9 +48,10 @@ import { useDispatch , useSelector} from 'react-redux';
 
         e.preventDefault();
 
-         if(actionBeingPerformed=="Add Expense" && movementData.amount>0){
-            setValidationMessage("Expenses should be < 0");
-         }else if (actionBeingPerformed=="Add Income" && movementData.jar.length!=jars.length){
+        //  if(actionBeingPerformed=="Add Expense" && movementData.amount>0){
+        //     setValidationMessage("Expenses should be < 0");
+        //  }else 
+         if (actionBeingPerformed=="Add Income" && movementData.jar.length!=jars.length){
             setValidationMessage("Incomes should be applied to all jars");
         }else if (actionBeingPerformed=="Edit Movement" && movementData.amount>0 && movementData.jar.length!=jars.length){
             setValidationMessage("Incomes should be applied to all jars");
@@ -66,6 +64,9 @@ import { useDispatch , useSelector} from 'react-redux';
                     dispatch(selectionActions.clearFormPurpose());
                 
                 }else{
+
+                    if(actionBeingPerformed=="Add Expense") setMovementData({...movementData, amount:-Math.abs(movementData.amount)})
+                    console.log(movementData)
                     dispatch(movementActions.createMovement(movementData));      
                     setMovementData({...movementData,concept:"", amount:'', jar:[]});
                     dispatch(selectionActions.clearFormPurpose());
@@ -74,20 +75,37 @@ import { useDispatch , useSelector} from 'react-redux';
         
     };
     const handleCheck = (e) => {
+      
         let updatedList = [...movementData.jar];
     
         if (e.target.checked) {
+                
         updatedList = [...movementData.jar, jars.find(item=>item._id==e.target.value)];
-        } else {
-        updatedList.splice(movementData.jar.filter(item=>item._id!=e.target.value), 1);
-        }
         setMovementData({...movementData, jar:updatedList})
+        } else {
+            setMovementData({...movementData, jar:updatedList.filter(item=>item._id!=e.target.value)})
+        
+        }
+    
+      
     };
+    const signCheck=(e)=>{
+        if(!isNaN(e.target.value)){
+            setMovementData({...movementData, amount:e.target.value})
+            }else{
+                 setMovementData({...movementData, amount:0})
+            }
+    }
     
   
     return (
         <div className="form">
-          <label className="m-2 validation_message">{validationMessage} </label>
+           { validationMessage !="" &&
+             <div className="alert-pop-up">
+                <span className="alert">{validationMessage}</span>
+                <input className="close-alert" readOnly value="x" onClick={()=>setValidationMessage("")}/>
+            </div>
+             }
           <form onSubmit={handleSubmit}>
               <div className="form-group"> 
                   <label className="m-2">Concept: </label>
@@ -103,8 +121,8 @@ import { useDispatch , useSelector} from 'react-redux';
                   <input 
                       type="text" 
                       className="form-control"
-                      value={movementData.amount}
-                      onChange={(e)=>setMovementData({...movementData, amount:e.target.value})}
+                      value={(movementData.amount)?((actionBeingPerformed=="Add Expense")?-Math.abs(movementData.amount):movementData.amount):''}
+                      onChange={(e)=>{signCheck(e)}}
                       />
               </div>
               <div className="form-group">
@@ -122,8 +140,9 @@ import { useDispatch , useSelector} from 'react-redux';
               </div>
 
               <div className="bottom mt-5">
+                  <input className="submitButton cancel" readOnly value="x" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
                 <input type="submit" value={actionBeingPerformed?actionBeingPerformed:"Button"} className="submitButton" />
-                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(selectionActions.clearFormPurpose());}}/>
+                 
               </div>  
               
          

@@ -39,15 +39,33 @@ export const DistributionForm = () => {
          
     };
 
+    const handleCancel=()=>{
+        
+        let reducer=(acc,item)=>acc+parseFloat(item.percentage);
+        
+        if(updatedJars.reduce(reducer,0)!=100){
+           
+            setValidationMessage(" All the Percentages shoud Add up to 100%");
+        }else{
+            dispatch(clearFormPurpose());
+        }
+    }
+
     const handleChange=(e,jar)=>{
            const newJar={...jar,percentage:e.target.value };
            setUpdatedJars(updatedJars.map(item=>item._id==jar._id?newJar:item))
        
     }
     return (
-        <div>
+       
           <div className="form">
-          <label className="m-2 validation_message">{validationMessage} </label>
+            { validationMessage !="" &&
+             <div className="alert-pop-up alert-pop-up-big">
+                <span className="alert">{validationMessage}</span>
+                <input className="close-alert" readOnly value="x" onClick={()=>setValidationMessage("")}/>
+            </div>
+             }
+          
           <form onSubmit={handleSubmit}>
               {updatedJars.map(jar=>{
                     return ( 
@@ -64,12 +82,13 @@ export const DistributionForm = () => {
                 )}
               
               <div className="bottom mt-5">
+                <input className="submitButton cancel" readOnly value="x" onClick={handleCancel}/>
                 <input type="submit" value="Save" className="submitButton" />
-                 <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{ dispatch(clearFormPurpose());}}/>
+         
               </div>            
           </form>
         </div>
             
-        </div>
+       
     )
 }

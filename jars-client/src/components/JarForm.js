@@ -11,7 +11,7 @@ import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercent
          name:''
 
      })
-    const [validationMessage, setValidationMessage]=useState('')
+    const [validationMessage, setValidationMessage]=useState("");
     const dispatch= useDispatch();
    
     const jars = useSelector((state) =>(state.jars ? state.jars :null));
@@ -33,22 +33,23 @@ import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercent
         if(jars.find(jar=>jar.name==jarData.name)!=null && jarSelected==null){
             setValidationMessage("There already is a Jar  with that name, please choose another one");
 
-        }else{  setValidationMessage('');}
+        }else{  
+                setValidationMessage("");
       
-        if (jarSelected) {
-            dispatch(updateJar({_id:jarSelected._id,...jarData}));
-            dispatch(clearJarSelected());
-            dispatch(clearFormPurpose());
-            
-        }else{
-            dispatch(createJar(jarData));
-            setJarData({...jarData, percentage:"", name:""});
-            dispatch(clearFormPurpose());
-            dispatch(settingFormPurposeToDistributePercentagesOfJars());
-            
+                if (jarSelected) {
+                    dispatch(updateJar({_id:jarSelected._id,...jarData}));
+                    dispatch(clearJarSelected());
+                    dispatch(clearFormPurpose());
+                    
+                }else{
+                    dispatch(createJar(jarData));
+                    setJarData({...jarData, percentage:"", name:""});
+                    dispatch(clearFormPurpose());
+                    dispatch(settingFormPurposeToDistributePercentagesOfJars());
+                    
+                }
         }
-        // 
-        
+      
        
     };
     const handleCancel=()=>{
@@ -59,7 +60,13 @@ import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercent
   
     return (
         <div className="form">
-          <label className="m-2 validation_message">{validationMessage} </label>
+          { validationMessage !="" &&
+             <div className="alert-pop-up">
+                <span className="alert">{validationMessage}</span>
+                <input className="close-alert" readOnly value="x" onClick={()=>setValidationMessage("")}/>
+            </div>
+          
+         }
           <form onSubmit={handleSubmit}>
               <div className="form-group"> 
                   <label className="m-2">Name: </label>
@@ -83,8 +90,9 @@ import {clearJarSelected,clearFormPurpose, settingFormPurposeToDistributePercent
             
 
               <div className="bottom mt-5">
+                   <input className="submitButton cancel" readOnly value="X" onClick={()=>{handleCancel() }}/>
                 <input type="submit" value={ jarSelected==null? "Add Jar":"Edit"}className="submitButton" />
-                                <input className="submitButton cancel" readOnly value="Cancel" onClick={()=>{handleCancel() }}/>
+                               
               </div>            
           </form>
         </div>
