@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { Doughnut} from 'react-chartjs-2';
-import {Chart, ArcElement} from 'chart.js'
+import {Chart, ArcElement, Tooltip} from 'chart.js'
 
 
 export const DoughnutChart = () => {
 
     Chart.register(ArcElement);
+    Chart.register([Tooltip]);
     const jars = useSelector((state) =>(state.jars ? state.jars :null));
 
     const state = {
@@ -44,15 +45,19 @@ export const DoughnutChart = () => {
             <Doughnut
             data={state}
             options={{
-                title:{
-                    display:false
-                },
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                     enabled: true
-                }
+                
+                plugins: {
+                        tooltip: {
+                            titleFont: {
+                            size: 50
+                            },
+                            bodyFont: {
+                            size: 10
+                            }
+                        }
+                    }
+            
+              
                 // ,
                 // cutout: 230
             }}
@@ -61,10 +66,3 @@ export const DoughnutChart = () => {
   );
 };
 
-
-  //verde claro
-                // verde oscuro
-                //celeste
-                //rojo
-                //amarillo
-                //violeta
