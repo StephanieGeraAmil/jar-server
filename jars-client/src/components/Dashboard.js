@@ -7,6 +7,7 @@ import { settingFormPurposeToAddJar, settingFormPurposeToDistributePercentagesOf
 import MovementsHistorySection from './MovementsHistorySection';
 import Panel from './Panel';
 import JarsSection from './JarsSection';
+import {DoughnutChart} from './Chart';
 
 
 
@@ -40,6 +41,7 @@ export const Dashboard = () => {
                         }} onClick={()=>{handleDistributePercentages()}}>
                     </div>
                 </div>
+                <DoughnutChart/>
                 
                 
 
